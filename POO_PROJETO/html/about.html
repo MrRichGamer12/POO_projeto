@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Sobre</title>
+
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <h1>Sobre o FocusUp</h1>
+
+    <p>
+        Aplicação focada em ajudar jovens com TDAH.
+    </p>
+
+    <script type="module">
+
+        import { renderNavbar }
+        from "../js/view/commonView.js";
+
+        document.getElementById("navbar").innerHTML =
+            renderNavbar();
+
+    </script>
+
+</body>
+</html>

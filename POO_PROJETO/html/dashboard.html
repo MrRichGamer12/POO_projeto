@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <h1>Dashboard</h1>
+
+    <p>Pontos: <span id="points">0</span></p>
+
+    <p>Nível: <span id="level">1</span></p>
+
+    <hr>
+
+    <h3>Nova tarefa</h3>
+
+    <input type="text" id="taskInput">
+
+    <button id="addTaskBtn">
+        Adicionar
+    </button>
+
+    <ul id="taskList"></ul>
+
+    <hr>
+
+    <h3>Sessões de foco</h3>
+
+<button class="focusBtn" data-minutes="5">
+    +5 min
+</button>
+
+<button class="focusBtn" data-minutes="15">
+    +15 min
+</button>
+
+<button class="focusBtn" data-minutes="25">
+    +25 min
+</button>
+
+<br><br>
+
+<input
+    type="number"
+    id="customMinutes"
+    placeholder="Minutos personalizados"
+>
+
+<button id="customFocusBtn">
+    Adicionar tempo
+</button>
+
+<button id="startFocusBtn">
+    Iniciar Sessão
+</button>
+
+<button id="pauseFocusBtn">
+    Pausar
+</button>
+
+<button id="stopFocusBtn">
+    Parar sessão
+</button>
+
+<div class="timer-box">
+
+    <h3>Sessão Atual</h3>
+
+    <p id="sessionStatus">
+        Nenhuma sessão ativa
+    </p>
+
+    <div id="timer">
+        00:00
+    </div>
+
+</div>
+    <script type="module"
+        src="../js/view/dashboardView.js">
+    </script>
+
+</body>
+</html>

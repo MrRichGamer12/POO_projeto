@@ -1,0 +1,51 @@
+body {
+    font-family: Arial;
+    padding: 20px;
+    background-color: #f4f7fb;
+}
+
+.navbar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    background: #4a90e2;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #4a90e2;
+    color: white;
+}
+
+input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.timer-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    width: 250px;
+}
+
+#timer {
+    font-size: 40px;
+    font-weight: bold;
+}
+#customMinutes {
+    width: 180px;
+}
