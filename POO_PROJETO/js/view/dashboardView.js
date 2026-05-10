@@ -56,14 +56,16 @@ function renderTasks() {
 
 function updateTimerDisplay() {
 
+    const hours = Math.floor(remainingSeconds / 3600);
+
     const minutes =
-        Math.floor(remainingSeconds / 60);
+        Math.floor(remainingSeconds / 60) % 60;
 
     const seconds =
         remainingSeconds % 60;
 
     timerElement.textContent =
-        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+        `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
 function startFocusSession(minutes) {
