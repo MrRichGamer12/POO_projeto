@@ -1,11 +1,12 @@
-// Serviço responsável por comunicar com o JSON Server.
-// O localStorage continua a ser a persistência principal da aplicação.
-// Este serviço existe para cumprir o requisito de Mock Server e permitir simular dados externos.
+
+
+
+
 export default class MockApiService {
 
     static baseUrl = "http://localhost:3000";
 
-    // Verifica se o JSON Server está ativo sem impedir a aplicação de funcionar localmente.
+    
     static async isAvailable() {
         try {
             const controller = new AbortController();
@@ -24,7 +25,7 @@ export default class MockApiService {
         }
     }
 
-    // Método genérico GET para ler uma coleção do db.json.
+    
     static async get(resource) {
         try {
             const response = await fetch(`${this.baseUrl}/${resource}`);
@@ -37,7 +38,7 @@ export default class MockApiService {
         }
     }
 
-    // Método genérico POST para simular criação de dados no JSON Server.
+    
     static async create(resource, data) {
         try {
             const response = await fetch(`${this.baseUrl}/${resource}`, {
@@ -55,7 +56,7 @@ export default class MockApiService {
         }
     }
 
-    // Método genérico PATCH para simular atualização parcial de dados.
+    
     static async update(resource, id, data) {
         try {
             const response = await fetch(`${this.baseUrl}/${resource}/${id}`, {
@@ -73,7 +74,7 @@ export default class MockApiService {
         }
     }
 
-    // Método genérico DELETE para simular remoção de dados no Mock Server.
+    
     static async remove(resource, id) {
         try {
             const response = await fetch(`${this.baseUrl}/${resource}/${id}`, {
@@ -90,8 +91,8 @@ export default class MockApiService {
     }
 
 
-    // Procura um utilizador no Mock Server pelo email.
-    // É usado apenas como fallback quando o utilizador ainda não existe na localStorage.
+    
+    
     static async findUserByEmail(email) {
         const cleanEmail = encodeURIComponent(String(email || "").trim().toLowerCase());
 
@@ -144,8 +145,20 @@ export default class MockApiService {
         return this.get("notifications");
     }
 
+    static async getNotes() {
+        return this.get("notes");
+    }
+
+    static async getMotivationQuotes() {
+        return this.get("motivationQuotes");
+    }
+
     static async getMotivationLinks() {
         return this.get("motivationLinks");
+    }
+
+    static async getMotivationTips() {
+        return this.get("motivationTips");
     }
 
     static checkResponse(response) {

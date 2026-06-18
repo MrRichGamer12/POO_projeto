@@ -1,5 +1,6 @@
-// Serviço central de notificações da aplicação.
-// Gere toasts internos, permissões do navegador e lembretes guardados no localStorage.
+
+
+
 export default class NotificationService {
 
     static settingsKey = "focusup_notification_settings";
@@ -16,7 +17,7 @@ export default class NotificationService {
         "10080": { label: "1 semana antes", minutesBefore: 10080 }
     };
 
-    // Começa a verificação periódica dos lembretes para o utilizador autenticado.
+    
     static start(options = {}) {
         this.stop();
 
@@ -64,7 +65,7 @@ export default class NotificationService {
         localStorage.setItem(this.settingsKey, JSON.stringify(settings));
     }
 
-    // Pede permissão ao navegador. Se não for possível, mantém apenas o fallback visual.
+    
     static async requestBrowserPermission() {
         const settings = this.getSettings();
 
@@ -108,7 +109,7 @@ export default class NotificationService {
         return permission;
     }
 
-    // Cria uma estrutura de lembrete simples e reutilizável pelos models.
+    
     static createReminder(trigger, optionValue, customMessage = "") {
         const option = this.reminderOptions[String(optionValue)] || this.reminderOptions.none;
 
@@ -155,8 +156,8 @@ export default class NotificationService {
         return reminder ? String(reminder.minutesBefore) : "none";
     }
 
-    // Mostra um toast interno não bloqueante. Funciona mesmo quando o navegador bloqueia notificações externas.
-    static showInternalNotification({ title = "FocusUp", message = "", type = "info", duration = 6000 } = {}) {
+    
+    static showInternalNotification({ title = "Foflux", message = "", type = "info", duration = 6000 } = {}) {
         const container = this.createToastContainer();
         const toast = document.createElement("div");
 
@@ -211,7 +212,7 @@ export default class NotificationService {
         this.showBrowserNotification(payload.title, payload.message);
     }
 
-    // Lê o utilizador atual, procura lembretes vencidos e marca-os como enviados para evitar duplicação.
+    
     static scanAndDispatch() {
         if (!this.getUser || !this.saveUser) {
             return;

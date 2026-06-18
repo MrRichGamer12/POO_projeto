@@ -1,7 +1,7 @@
 {
-  "name": "poo-projeto-3-focusup",
+  "name": "poo-projeto-3-foflux",
   "version": "1.1.0",
-  "description": "Aplicação FocusUp para POO com localStorage e JSON Server como Mock Server.",
+  "description": "Aplicação Foflux para POO com localStorage e JSON Server como Mock Server.",
   "private": true,
   "scripts": {
     "mock-server": "json-server --watch db.json --port 3000",

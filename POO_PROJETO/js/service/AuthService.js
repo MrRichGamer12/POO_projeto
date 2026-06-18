@@ -1,3 +1,4 @@
+
 import UserModel from "../model/UserModel.js";
 import StorageService from "./StorageService.js";
 import MockApiService from "./MockApiService.js";
@@ -37,8 +38,8 @@ export default class AuthService {
         return user;
     }
 
-    // O login usa localStorage como fonte principal.
-    // Se o utilizador não existir localmente, tenta carregar uma cópia inicial do JSON Server.
+    
+    
     static async login(email, password) {
         const cleanEmail = StorageService.normalizeEmail(email);
         const cleanPassword = String(password || "").trim();
@@ -70,8 +71,8 @@ export default class AuthService {
 
         const user = UserModel.fromObject(mockUser);
 
-        // Ao fazer o primeiro login com dados do db.json, o utilizador passa a existir
-        // na localStorage e a aplicação continua a funcionar mesmo sem o JSON Server.
+        
+        
         StorageService.updateUser(user);
         StorageService.saveCurrentUser(user);
 

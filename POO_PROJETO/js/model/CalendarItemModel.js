@@ -1,5 +1,5 @@
-// Modelo responsável por representar um item próprio do calendário.
-// Os itens do calendário são independentes de tarefas, eventos e hábitos, mas aparecem juntos na vista mensal.
+
+
 export default class CalendarItemModel {
 
     constructor(title, description = "", category = "Outro", type = "Outro", date = "", time = "") {
@@ -17,7 +17,7 @@ export default class CalendarItemModel {
         this.addHistory("Criação do item", "", this.title, this.createdAt);
     }
 
-    // Gera uma data local no formato AAAA-MM-DD para evitar diferenças causadas por UTC.
+    
     getTodayKey(date = new Date()) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -35,7 +35,7 @@ export default class CalendarItemModel {
         return allowed.includes(type) ? type : "Outro";
     }
 
-    // Normaliza lembretes associados ao item do calendário.
+    
     normalizeReminders(reminders = []) {
         return Array.isArray(reminders)
             ? reminders.map(reminder => ({
@@ -51,7 +51,7 @@ export default class CalendarItemModel {
             : [];
     }
 
-    // Atualiza lembretes e regista a alteração no histórico do item.
+    
     setReminders(reminders = []) {
         const normalized = this.normalizeReminders(reminders);
         const oldValue = this.reminders.map(reminder => reminder.label).join(", ") || "Sem lembrete";
@@ -64,12 +64,12 @@ export default class CalendarItemModel {
         this.reminders = normalized;
     }
 
-    // Quando data ou horário mudam, lembretes já enviados voltam a poder disparar.
+    
     resetReminderDelivery() {
         this.reminders = this.reminders.map(reminder => ({ ...reminder, sent: false, sentAt: null }));
     }
 
-    // Regista alterações para que o item mantenha rastreabilidade simples.
+    
     addHistory(type, oldValue = "", newValue = "", date = new Date().toISOString()) {
         this.history.push({
             id: `${Date.now()}-${Math.floor(Math.random() * 100000)}`,

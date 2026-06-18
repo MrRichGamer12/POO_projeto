@@ -9,7 +9,29 @@
       "bio": "Conta de administração para testes académicos.",
       "photo": "",
       "points": 120,
-      "level": 3
+      "level": 3,
+      "customFocusProfiles": [],
+      "stats": {
+        "motivationVisits": 0,
+        "activityDates": [
+          "2026-06-14",
+          "2026-06-15",
+          "2026-06-16",
+          "2026-06-17"
+        ],
+        "lastUsed": "admin",
+        "tasksCreated": 0,
+        "tasksCompleted": 0,
+        "breaks": 0
+      },
+      "createdAt": "2026-06-08T09:00:00.000Z",
+      "tasks": [],
+      "events": [],
+      "habits": [],
+      "calendarItems": [],
+      "focusHistory": [],
+      "badges": [],
+      "notes": []
     },
     {
       "id": "user-001",
@@ -19,8 +41,509 @@
       "role": "user",
       "bio": "Perfil de demonstração para testar tarefas, Pomodoro e conquistas.",
       "photo": "",
-      "points": 55,
-      "level": 2
+      "points": 180,
+      "level": 2,
+      "customFocusProfiles": [
+        {
+          "id": "focus-custom-001",
+          "userEmail": "teste@focusup.com",
+          "name": "Revisão rápida",
+          "focusTime": 10,
+          "breakTime": 2,
+          "focusSeconds": 600,
+          "breakSeconds": 120,
+          "cycles": 2,
+          "isCustom": true,
+          "createdAt": "2026-06-17T15:30:00.000Z"
+        },
+        {
+          "id": "focus-custom-002",
+          "userEmail": "teste@focusup.com",
+          "name": "Projeto longo",
+          "focusTime": 60,
+          "breakTime": 10,
+          "focusSeconds": 3600,
+          "breakSeconds": 600,
+          "cycles": 3,
+          "isCustom": true,
+          "createdAt": "2026-06-17T16:00:00.000Z"
+        }
+      ],
+      "stats": {
+        "motivationVisits": 1,
+        "activityDates": [
+          "2026-06-14",
+          "2026-06-15",
+          "2026-06-16",
+          "2026-06-17"
+        ],
+        "lastUsed": "motivation",
+        "tasksCreated": 3,
+        "tasksCompleted": 1,
+        "breaks": 1
+      },
+      "createdAt": "2026-06-09T10:00:00.000Z",
+      "tasks": [
+        {
+          "id": "task-001",
+          "userEmail": "teste@focusup.com",
+          "title": "Rever apontamentos de POO",
+          "priority": "Alta",
+          "completed": false,
+          "status": "Pendente",
+          "createdAt": "2026-06-10T09:00:00.000Z",
+          "completedAt": null,
+          "dueDate": "2026-06-20",
+          "dueTime": "18:00",
+          "versionHistory": [
+            {
+              "id": "version-task-001-creation",
+              "date": "2026-06-10T09:00:00.000Z",
+              "type": "Criação",
+              "oldValue": "",
+              "newValue": "Rever apontamentos de POO"
+            },
+            {
+              "id": "version-task-001-priority",
+              "date": "2026-06-11T10:00:00.000Z",
+              "type": "Alteração de prioridade",
+              "oldValue": "Média",
+              "newValue": "Alta"
+            }
+          ],
+          "reminders": [
+            {
+              "id": "reminder-task-001-due-120",
+              "trigger": "due",
+              "label": "2 horas antes",
+              "minutesBefore": 120,
+              "message": "Lembrete: a tarefa Rever apontamentos de POO termina em 2 horas.",
+              "sent": false,
+              "sentAt": null,
+              "createdAt": "2026-06-10T09:05:00.000Z"
+            }
+          ]
+        },
+        {
+          "id": "task-002",
+          "userEmail": "teste@focusup.com",
+          "title": "Completar sessão Pomodoro",
+          "priority": "Média",
+          "completed": true,
+          "status": "Concluída",
+          "createdAt": "2026-06-09T14:30:00.000Z",
+          "completedAt": "2026-06-09T15:00:00.000Z",
+          "dueDate": "2026-06-09",
+          "dueTime": "20:00",
+          "versionHistory": [
+            {
+              "id": "version-task-002-creation",
+              "date": "2026-06-09T14:30:00.000Z",
+              "type": "Criação",
+              "oldValue": "",
+              "newValue": "Completar sessão Pomodoro"
+            },
+            {
+              "id": "version-task-002-completed",
+              "date": "2026-06-09T15:00:00.000Z",
+              "type": "Conclusão",
+              "oldValue": "Pendente",
+              "newValue": "Concluída"
+            }
+          ],
+          "reminders": []
+        },
+        {
+          "id": "task-003",
+          "userEmail": "teste@focusup.com",
+          "title": "Preparar perguntas para a apresentação",
+          "priority": "Baixa",
+          "completed": false,
+          "status": "Atrasada",
+          "createdAt": "2026-06-12T11:15:00.000Z",
+          "completedAt": null,
+          "dueDate": "2026-06-15",
+          "dueTime": "10:00",
+          "versionHistory": [
+            {
+              "id": "version-task-003-creation",
+              "date": "2026-06-12T11:15:00.000Z",
+              "type": "Criação",
+              "oldValue": "",
+              "newValue": "Preparar perguntas para a apresentação"
+            },
+            {
+              "id": "version-task-003-deadline",
+              "date": "2026-06-13T08:30:00.000Z",
+              "type": "Alteração de data limite",
+              "oldValue": "Sem data",
+              "newValue": "2026-06-15"
+            }
+          ],
+          "reminders": []
+        }
+      ],
+      "events": [
+        {
+          "id": "event-001",
+          "userEmail": "teste@focusup.com",
+          "title": "Entrega do trabalho de POO",
+          "description": "Preparar versão final do projeto, README e apresentação.",
+          "category": "Faculdade",
+          "createdAt": "2026-06-10T10:00:00.000Z",
+          "startDate": "2026-06-16",
+          "startTime": "09:00",
+          "dueDate": "2026-06-17",
+          "dueTime": "23:59",
+          "completed": false,
+          "completedAt": null,
+          "status": "Em andamento",
+          "versionHistory": [
+            {
+              "id": "version-event-001-creation",
+              "date": "2026-06-10T10:00:00.000Z",
+              "type": "Criação do evento",
+              "oldValue": "",
+              "newValue": "Entrega do trabalho de POO"
+            },
+            {
+              "id": "version-event-001-start",
+              "date": "2026-06-12T14:00:00.000Z",
+              "type": "Alteração de data de início",
+              "oldValue": "2026-06-15",
+              "newValue": "2026-06-16"
+            }
+          ],
+          "reminders": [
+            {
+              "id": "reminder-event-001-start-30",
+              "trigger": "start",
+              "label": "30 minutos antes",
+              "minutesBefore": 30,
+              "message": "Lembrete: o evento Entrega do trabalho de POO começa em 30 minutos.",
+              "sent": false,
+              "sentAt": null,
+              "createdAt": "2026-06-10T10:05:00.000Z"
+            },
+            {
+              "id": "reminder-event-001-due-1440",
+              "trigger": "due",
+              "label": "1 dia antes",
+              "minutesBefore": 1440,
+              "message": "Lembrete: o limite do evento Entrega do trabalho de POO é amanhã.",
+              "sent": false,
+              "sentAt": null,
+              "createdAt": "2026-06-10T10:06:00.000Z"
+            }
+          ]
+        },
+        {
+          "id": "event-002",
+          "userEmail": "teste@focusup.com",
+          "title": "Estudar para teste de JavaScript",
+          "description": "Rever classes, módulos, localStorage e DOM.",
+          "category": "Estudo",
+          "createdAt": "2026-06-11T08:30:00.000Z",
+          "startDate": "2026-06-25",
+          "startTime": "18:00",
+          "dueDate": "2026-07-01",
+          "dueTime": "10:00",
+          "completed": false,
+          "completedAt": null,
+          "status": "Planeado",
+          "versionHistory": [
+            {
+              "id": "version-event-002-creation",
+              "date": "2026-06-11T08:30:00.000Z",
+              "type": "Criação do evento",
+              "oldValue": "",
+              "newValue": "Estudar para teste de JavaScript"
+            }
+          ],
+          "reminders": []
+        },
+        {
+          "id": "event-003",
+          "userEmail": "teste@focusup.com",
+          "title": "Enviar relatório intermédio",
+          "description": "Exemplo de evento atrasado para testar o estado.",
+          "category": "Projeto",
+          "createdAt": "2026-06-01T09:15:00.000Z",
+          "startDate": "2026-06-03",
+          "startTime": "09:00",
+          "dueDate": "2026-06-05",
+          "dueTime": "18:00",
+          "completed": false,
+          "completedAt": null,
+          "status": "Atrasado",
+          "versionHistory": [
+            {
+              "id": "version-event-003-creation",
+              "date": "2026-06-01T09:15:00.000Z",
+              "type": "Criação do evento",
+              "oldValue": "",
+              "newValue": "Enviar relatório intermédio"
+            },
+            {
+              "id": "version-event-003-deadline",
+              "date": "2026-06-02T11:30:00.000Z",
+              "type": "Alteração de horário limite",
+              "oldValue": "17:00",
+              "newValue": "18:00"
+            }
+          ],
+          "reminders": []
+        }
+      ],
+      "habits": [
+        {
+          "id": "habit-001",
+          "userEmail": "teste@focusup.com",
+          "title": "Estudar 30 minutos",
+          "description": "Hábito diário para reduzir procrastinação e manter contacto com a matéria.",
+          "createdAt": "2026-06-10T10:00:00.000Z",
+          "completedDates": [
+            {
+              "date": "2026-06-14",
+              "completedAt": "2026-06-14T18:30:00.000Z"
+            },
+            {
+              "date": "2026-06-15",
+              "completedAt": "2026-06-15T18:45:00.000Z"
+            },
+            {
+              "date": "2026-06-16",
+              "completedAt": "2026-06-16T19:10:00.000Z"
+            }
+          ],
+          "history": [
+            {
+              "id": "history-habit-001-creation",
+              "date": "2026-06-10T10:00:00.000Z",
+              "type": "Criação do hábito",
+              "oldValue": "",
+              "newValue": "Estudar 30 minutos"
+            },
+            {
+              "id": "history-habit-001-done",
+              "date": "2026-06-16T19:10:00.000Z",
+              "type": "Conclusão diária",
+              "oldValue": "Pendente",
+              "newValue": "Feito em 2026-06-16"
+            }
+          ],
+          "statusToday": "Pendente"
+        },
+        {
+          "id": "habit-002",
+          "userEmail": "teste@focusup.com",
+          "title": "Organizar tarefas do dia",
+          "description": "Rever prioridades antes de começar a estudar.",
+          "createdAt": "2026-06-12T08:00:00.000Z",
+          "completedDates": [
+            {
+              "date": "2026-06-15",
+              "completedAt": "2026-06-15T08:15:00.000Z"
+            }
+          ],
+          "history": [
+            {
+              "id": "history-habit-002-creation",
+              "date": "2026-06-12T08:00:00.000Z",
+              "type": "Criação do hábito",
+              "oldValue": "",
+              "newValue": "Organizar tarefas do dia"
+            }
+          ],
+          "statusToday": "Pendente"
+        }
+      ],
+      "calendarItems": [
+        {
+          "id": "calendar-001",
+          "userEmail": "teste@focusup.com",
+          "title": "Apresentação final",
+          "description": "Defesa do projeto de POO.",
+          "category": "Apresentação",
+          "type": "Apresentação",
+          "date": "2026-06-18",
+          "time": "14:00",
+          "createdAt": "2026-06-10T09:00:00.000Z",
+          "history": [
+            {
+              "id": "history-calendar-001-creation",
+              "date": "2026-06-10T09:00:00.000Z",
+              "type": "Criação do item",
+              "oldValue": "",
+              "newValue": "Apresentação final"
+            }
+          ],
+          "notifications": [
+            {
+              "id": "notif-001",
+              "type": "1 dia antes",
+              "minutesBefore": 1440,
+              "message": "A apresentação final é amanhã."
+            }
+          ],
+          "reminders": [
+            {
+              "id": "notif-001",
+              "trigger": "date",
+              "label": "1 dia antes",
+              "minutesBefore": 1440,
+              "message": "A apresentação final é amanhã.",
+              "sent": false,
+              "sentAt": null,
+              "createdAt": "2026-06-10T09:00:00.000Z"
+            }
+          ]
+        },
+        {
+          "id": "calendar-002",
+          "userEmail": "teste@focusup.com",
+          "title": "Aula de revisão de JavaScript",
+          "description": "Rever DOM, módulos e localStorage.",
+          "category": "Faculdade",
+          "type": "Aula",
+          "date": "2026-06-19",
+          "time": "10:30",
+          "createdAt": "2026-06-11T12:00:00.000Z",
+          "history": [
+            {
+              "id": "history-calendar-002-creation",
+              "date": "2026-06-11T12:00:00.000Z",
+              "type": "Criação do item",
+              "oldValue": "",
+              "newValue": "Aula de revisão de JavaScript"
+            }
+          ],
+          "reminders": []
+        },
+        {
+          "id": "calendar-003",
+          "userEmail": "teste@focusup.com",
+          "title": "Bloco de estudo individual",
+          "description": "Sessão de estudo focada antes da entrega.",
+          "category": "Estudo",
+          "type": "Estudo",
+          "date": "2026-06-16",
+          "time": "18:00",
+          "createdAt": "2026-06-12T08:45:00.000Z",
+          "history": [
+            {
+              "id": "history-calendar-003-creation",
+              "date": "2026-06-12T08:45:00.000Z",
+              "type": "Criação do item",
+              "oldValue": "",
+              "newValue": "Bloco de estudo individual"
+            }
+          ],
+          "reminders": []
+        }
+      ],
+      "focusHistory": [
+        {
+          "id": "pomodoro-001",
+          "userEmail": "teste@focusup.com",
+          "profile": "Pomodoro Clássico",
+          "type": "focus",
+          "minutes": 25,
+          "cycle": 1,
+          "date": "2026-06-09T15:00:00.000Z"
+        }
+      ],
+      "badges": [
+        {
+          "id": "badge-user-001-focus",
+          "key": "first_focus",
+          "name": "Primeira sessão de foco concluída",
+          "description": "Conclui a tua primeira sessão de foco.",
+          "category": "Foco",
+          "target": 1,
+          "unlockedAt": "2026-06-09T15:00:00.000Z"
+        },
+        {
+          "id": "badge-user-001-motivation",
+          "key": "first_motivation_visit",
+          "name": "Primeira visita à Motivação",
+          "description": "Visitaste a página de Motivação pela primeira vez.",
+          "category": "Motivação",
+          "target": 1,
+          "unlockedAt": "2026-06-17T12:00:00.000Z"
+        }
+      ],
+      "notes": [
+        {
+          "id": "note-001",
+          "userEmail": "teste@focusup.com",
+          "title": "Ideias para a defesa",
+          "content": "Explicar MVC simplificado, localStorage, JSON Server, notificações e gamificação.",
+          "createdAt": "2026-06-17T09:00:00.000Z",
+          "updatedAt": "2026-06-17T10:30:00.000Z"
+        },
+        {
+          "id": "note-002",
+          "userEmail": "teste@focusup.com",
+          "title": "Rever antes da apresentação",
+          "content": "Testar login, tarefas, eventos, hábitos, calendário, Pomodoro, motivação, admin e estatísticas.",
+          "createdAt": "2026-06-17T11:00:00.000Z",
+          "updatedAt": "2026-06-17T11:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "user-002",
+      "name": "Demo Foflux",
+      "email": "demo@foflux.com",
+      "password": "demo123",
+      "role": "user",
+      "bio": "Utilizador simulado para demonstrar ranking e métricas.",
+      "photo": "",
+      "points": 90,
+      "level": 2,
+      "createdAt": "2026-06-12T09:00:00.000Z",
+      "stats": {
+        "motivationVisits": 1,
+        "activityDates": [
+          "2026-06-15",
+          "2026-06-16"
+        ],
+        "lastUsed": "ranking",
+        "tasksCreated": 1,
+        "tasksCompleted": 1,
+        "breaks": 0
+      },
+      "tasks": [
+        {
+          "id": "task-demo-001",
+          "title": "Ler resumo de POO",
+          "priority": "Média",
+          "completed": true,
+          "createdAt": "2026-06-15T09:00:00.000Z",
+          "completedAt": "2026-06-15T10:00:00.000Z",
+          "dueDate": "2026-06-15",
+          "dueTime": "18:00",
+          "versionHistory": [],
+          "reminders": []
+        }
+      ],
+      "events": [],
+      "habits": [],
+      "calendarItems": [],
+      "customFocusProfiles": [],
+      "focusHistory": [
+        {
+          "id": "focus-demo-001",
+          "profile": "Sessão Curta",
+          "type": "focus",
+          "minutes": 15,
+          "cycle": 1,
+          "date": "2026-06-15T10:00:00.000Z"
+        }
+      ],
+      "badges": [],
+      "notes": []
     }
   ],
   "tasks": [
@@ -417,6 +940,14 @@
       "description": "Preenche nome, bio e foto de perfil.",
       "category": "Perfil",
       "target": 1
+    },
+    {
+      "id": "achievement-004",
+      "key": "first_motivation_visit",
+      "name": "Primeira visita à Motivação",
+      "description": "Visita a área de Motivação pela primeira vez.",
+      "category": "Motivação",
+      "target": 1
     }
   ],
   "statistics": [
@@ -462,22 +993,197 @@
       "trigger": "date",
       "minutesBefore": 1440,
       "sent": false
+    },
+    {
+      "id": "notification-pomodoro-example",
+      "type": "pomodoro",
+      "title": "Fim do foco",
+      "message": "Exemplo de notificação interna e do navegador para o Pomodoro.",
+      "createdAt": "2026-06-17T16:30:00.000Z"
     }
   ],
   "motivationLinks": [
     {
-      "id": "motivation-001",
-      "title": "Informação geral sobre TDAH",
-      "type": "organização de saúde",
-      "url": "https://www.cdc.gov/adhd/",
-      "description": "Conteúdo informativo sobre TDAH. Não substitui acompanhamento profissional."
+      "id": "link-001",
+      "title": "CDC - Informação geral sobre ADHD/TDAH",
+      "description": "Página com informação geral sobre sintomas, diagnóstico, tratamento e recursos educativos.",
+      "category": "TDAH e atenção",
+      "type": "Organização de saúde",
+      "url": "https://www.cdc.gov/adhd/index.html"
     },
     {
-      "id": "motivation-002",
-      "title": "Técnicas de estudo e foco",
-      "type": "artigo educativo",
-      "url": "https://www.apa.org/topics/adhd",
-      "description": "Informação educativa sobre atenção, foco e TDAH."
+      "id": "link-002",
+      "title": "NHS - ADHD em adultos",
+      "description": "Informação pública sobre TDAH em adultos, gestão diária e apoio profissional.",
+      "category": "TDAH e atenção",
+      "type": "Organização de saúde",
+      "url": "https://www.nhs.uk/conditions/adhd-adults/"
+    },
+    {
+      "id": "link-003",
+      "title": "NHS - ADHD em crianças e jovens",
+      "description": "Recurso informativo sobre TDAH em crianças e jovens, com orientações gerais de apoio.",
+      "category": "TDAH e atenção",
+      "type": "Organização de saúde",
+      "url": "https://www.nhs.uk/conditions/adhd-children-teenagers/"
+    },
+    {
+      "id": "link-004",
+      "title": "CHADD - Recursos para adultos com ADHD",
+      "description": "Organização especializada com recursos educativos, webinars e apoio comunitário.",
+      "category": "Hábitos e rotina",
+      "type": "Organização especializada",
+      "url": "https://chadd.org/education/adults/"
+    },
+    {
+      "id": "link-005",
+      "title": "CHADD - Estratégias de organização e gestão do tempo",
+      "description": "Webinar educativo sobre organização, tarefas e gestão do tempo para jovens com ADHD.",
+      "category": "Técnicas de foco",
+      "type": "Vídeo educativo",
+      "url": "https://chadd.org/webinars/homework-organization-and-time-management-strategies-to-help-kids-with-adhd/"
+    },
+    {
+      "id": "link-006",
+      "title": "CHADD/UMD ADHD Tools",
+      "description": "Conjunto de vídeos e ferramentas educativas pensadas para adolescentes e jovens adultos com ADHD.",
+      "category": "Vídeos educativos",
+      "type": "Vídeo educativo",
+      "url": "https://chadd.org/stroud-umdadhdtools/"
+    },
+    {
+      "id": "link-007",
+      "title": "CDC - Diagnóstico de ADHD",
+      "description": "Informação sobre avaliação e diagnóstico, com recomendação de falar com profissionais qualificados.",
+      "category": "TDAH e atenção",
+      "type": "Organização de saúde",
+      "url": "https://www.cdc.gov/adhd/diagnosis/index.html"
+    },
+    {
+      "id": "link-008",
+      "title": "CDC - Tratamento e apoio",
+      "description": "Informação geral sobre opções de tratamento, apoio escolar e acompanhamento profissional.",
+      "category": "TDAH e atenção",
+      "type": "Organização de saúde",
+      "url": "https://www.cdc.gov/adhd/treatment/index.html"
+    }
+  ],
+  "customPomodoroProfiles": [
+    {
+      "id": "focus-custom-001",
+      "userEmail": "teste@focusup.com",
+      "name": "Revisão rápida",
+      "focusTime": 10,
+      "breakTime": 2,
+      "focusSeconds": 600,
+      "breakSeconds": 120,
+      "cycles": 2,
+      "isCustom": true,
+      "createdAt": "2026-06-17T15:30:00.000Z"
+    },
+    {
+      "id": "focus-custom-002",
+      "userEmail": "teste@focusup.com",
+      "name": "Projeto longo",
+      "focusTime": 60,
+      "breakTime": 10,
+      "focusSeconds": 3600,
+      "breakSeconds": 600,
+      "cycles": 3,
+      "isCustom": true,
+      "createdAt": "2026-06-17T16:00:00.000Z"
+    }
+  ],
+  "motivationQuotes": [
+    {
+      "id": "quote-001",
+      "text": "Um passo pequeno ainda é progresso.",
+      "category": "Progresso"
+    },
+    {
+      "id": "quote-002",
+      "text": "Começa pelo que é possível agora, não pelo plano perfeito.",
+      "category": "Foco"
+    },
+    {
+      "id": "quote-003",
+      "text": "Dividir uma tarefa grande torna o primeiro passo mais leve.",
+      "category": "Organização"
+    },
+    {
+      "id": "quote-004",
+      "text": "Constância não é fazer tudo. É voltar ao caminho quando te distrais.",
+      "category": "Constância"
+    },
+    {
+      "id": "quote-005",
+      "text": "Uma pausa consciente também faz parte do foco.",
+      "category": "Autocuidado"
+    },
+    {
+      "id": "quote-006",
+      "text": "Escolhe uma prioridade principal e dá-lhe alguns minutos de atenção real.",
+      "category": "Estudo"
+    },
+    {
+      "id": "quote-007",
+      "text": "Não precisas resolver o dia inteiro agora. Resolve o próximo passo.",
+      "category": "Procrastinação"
+    },
+    {
+      "id": "quote-008",
+      "text": "Organização é uma ferramenta de apoio, não uma cobrança perfeita.",
+      "category": "Rotina"
+    }
+  ],
+  "motivationTips": [
+    {
+      "id": "tip-001",
+      "title": "Divide para começar",
+      "description": "Transforma uma tarefa grande em três ações pequenas e escolhe só a primeira."
+    },
+    {
+      "id": "tip-002",
+      "title": "Usa sessões curtas",
+      "description": "Começa com 10 ou 15 minutos de foco antes de tentar uma sessão longa."
+    },
+    {
+      "id": "tip-003",
+      "title": "Define uma prioridade",
+      "description": "Escolhe uma prioridade principal para o dia e deixa o resto como apoio."
+    },
+    {
+      "id": "tip-004",
+      "title": "Prepara o ambiente",
+      "description": "Remove uma distração visível antes de começar a estudar ou trabalhar."
+    },
+    {
+      "id": "tip-005",
+      "title": "Faz pausas reais",
+      "description": "Durante a pausa, levanta-te, bebe água ou respira alguns minutos sem trocar uma distração por outra."
+    },
+    {
+      "id": "tip-006",
+      "title": "Planeia antes de executar",
+      "description": "Antes de começar, escreve o que vais fazer, quanto tempo vais tentar e qual é o próximo passo."
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-001",
+      "userEmail": "teste@focusup.com",
+      "title": "Ideias para a defesa",
+      "content": "Explicar MVC simplificado, localStorage, JSON Server, notificações e gamificação.",
+      "createdAt": "2026-06-17T09:00:00.000Z",
+      "updatedAt": "2026-06-17T10:30:00.000Z"
+    },
+    {
+      "id": "note-002",
+      "userEmail": "teste@focusup.com",
+      "title": "Rever antes da apresentação",
+      "content": "Testar login, tarefas, eventos, hábitos, calendário, Pomodoro, motivação, admin e estatísticas.",
+      "createdAt": "2026-06-17T11:00:00.000Z",
+      "updatedAt": "2026-06-17T11:00:00.000Z"
     }
   ]
 }

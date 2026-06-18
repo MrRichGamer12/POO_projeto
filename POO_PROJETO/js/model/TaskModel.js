@@ -1,5 +1,5 @@
-// Modelo responsável por representar uma tarefa da aplicação.
-// Mantém dados principais, prazo, estado calculado e histórico de versões.
+
+
 export default class TaskModel {
 
     constructor(title, priority = "Média", dueDate = "", dueTime = "") {
@@ -17,7 +17,7 @@ export default class TaskModel {
         this.addVersion("Criação", "", this.title, this.createdAt);
     }
 
-    // Normaliza prioridades antigas ou valores inválidos para manter compatibilidade.
+    
     normalizePriority(priority) {
         const normalizedPriority = priority === "Normal" ? "Média" : priority;
         return ["Baixa", "Média", "Alta"].includes(normalizedPriority)
@@ -25,7 +25,7 @@ export default class TaskModel {
             : "Média";
     }
 
-    // Normaliza lembretes vindos do localStorage ou do Mock Server.
+    
     normalizeReminders(reminders = []) {
         return Array.isArray(reminders)
             ? reminders.map(reminder => ({
@@ -41,7 +41,7 @@ export default class TaskModel {
             : [];
     }
 
-    // Atualiza os lembretes e regista a alteração no histórico.
+    
     setReminders(reminders = []) {
         const normalized = this.normalizeReminders(reminders);
         const oldValue = this.reminders.map(reminder => reminder.label).join(", ") || "Sem lembrete";
@@ -54,12 +54,12 @@ export default class TaskModel {
         this.reminders = normalized;
     }
 
-    // Quando o prazo muda, lembretes já enviados voltam a poder ser disparados no novo prazo.
+    
     resetReminderDelivery() {
         this.reminders = this.reminders.map(reminder => ({ ...reminder, sent: false, sentAt: null }));
     }
 
-    // Regista uma alteração relevante no histórico da tarefa.
+    
     addVersion(type, oldValue = "", newValue = "", date = new Date().toISOString()) {
         this.versionHistory.push({
             id: `${Date.now()}-${Math.floor(Math.random() * 100000)}`,

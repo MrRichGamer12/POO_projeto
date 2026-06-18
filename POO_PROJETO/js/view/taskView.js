@@ -1,5 +1,5 @@
-// View responsável pela página de Tarefas, Hábitos e Planeamento.
-// Mantém a lógica da interface separada dos modelos, respeitando o MVC simplificado.
+
+
 import { initPrivatePage, showBadgeNotifications, showMessage } from "./commonView.js";
 import AuthService from "../service/AuthService.js";
 import AchievementService from "../service/AchievementService.js";
@@ -15,6 +15,11 @@ class TaskView {
         this.user = user;
         this.statusFilter = "all";
         this.priorityFilter = "all";
+        this.eventStatusFilter = "all";
+        this.eventCategoryFilter = "all";
+        this.habitTodayFilter = "all";
+        this.calendarCategoryFilter = "all";
+        this.calendarTypeFilter = "all";
         this.activeHistoryTaskId = null;
         this.activeHistoryEventId = null;
         this.activeHistoryHabitId = null;
@@ -22,7 +27,7 @@ class TaskView {
         this.calendarCurrentMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
         this.selectedCalendarDate = this.getDateKey(new Date());
 
-        // Garante compatibilidade com dados guardados em versões anteriores da aplicação.
+        
         this.user.tasks = (this.user.tasks || []).map(task => TaskModel.fromObject(task));
         this.user.events = (this.user.events || []).map(event => EventModel.fromObject(event));
         this.user.habits = (this.user.habits || []).map(habit => HabitModel.fromObject(habit));
@@ -61,6 +66,8 @@ class TaskView {
             eventMessage: document.getElementById("eventMessage"),
             eventList: document.getElementById("eventList"),
             totalEvents: document.getElementById("totalEvents"),
+            eventStatusFilter: document.getElementById("eventStatusFilter"),
+            eventCategoryFilter: document.getElementById("eventCategoryFilter"),
             plannedEvents: document.getElementById("plannedEvents"),
             activeEvents: document.getElementById("activeEvents"),
             overdueEvents: document.getElementById("overdueEvents"),
@@ -74,6 +81,7 @@ class TaskView {
             completedHabitsToday: document.getElementById("completedHabitsToday"),
             pendingHabitsToday: document.getElementById("pendingHabitsToday"),
             currentHabitStreak: document.getElementById("currentHabitStreak"),
+            habitTodayFilter: document.getElementById("habitTodayFilter"),
 
             calendarForm: document.getElementById("calendarItemForm"),
             calendarTitle: document.getElementById("calendarItemTitle"),
@@ -90,7 +98,9 @@ class TaskView {
             calendarDayItems: document.getElementById("calendarDayItems"),
             calendarPrevMonth: document.getElementById("calendarPrevMonth"),
             calendarNextMonth: document.getElementById("calendarNextMonth"),
-            calendarToday: document.getElementById("calendarToday")
+            calendarToday: document.getElementById("calendarToday"),
+            calendarCategoryFilter: document.getElementById("calendarCategoryFilter"),
+            calendarTypeFilter: document.getElementById("calendarTypeFilter")
         };
 
         this.bindEvents();
@@ -124,9 +134,24 @@ class TaskView {
             this.addPlanningEvent();
         });
 
+        this.elements.eventStatusFilter?.addEventListener("change", event => {
+            this.eventStatusFilter = event.target.value;
+            this.renderEvents();
+        });
+
+        this.elements.eventCategoryFilter?.addEventListener("change", event => {
+            this.eventCategoryFilter = event.target.value;
+            this.renderEvents();
+        });
+
         this.elements.habitForm.addEventListener("submit", event => {
             event.preventDefault();
             this.addDailyHabit();
+        });
+
+        this.elements.habitTodayFilter?.addEventListener("change", event => {
+            this.habitTodayFilter = event.target.value;
+            this.renderHabits();
         });
 
         this.elements.calendarForm.addEventListener("submit", event => {
@@ -137,6 +162,16 @@ class TaskView {
         this.elements.calendarPrevMonth.addEventListener("click", () => this.changeCalendarMonth(-1));
         this.elements.calendarNextMonth.addEventListener("click", () => this.changeCalendarMonth(1));
         this.elements.calendarToday.addEventListener("click", () => this.goToToday());
+
+        this.elements.calendarCategoryFilter?.addEventListener("change", event => {
+            this.calendarCategoryFilter = event.target.value;
+            this.renderCalendar();
+        });
+
+        this.elements.calendarTypeFilter?.addEventListener("change", event => {
+            this.calendarTypeFilter = event.target.value;
+            this.renderCalendar();
+        });
     }
 
     addTask() {
@@ -391,7 +426,7 @@ class TaskView {
 
         const oldStatus = planningEvent.getStatus();
         planningEvent.markCompleted();
-        // O método markCompleted regista o estado anterior no histórico; isto garante atividade no perfil.
+        
         this.user.addPoints(15);
         this.user.markActivity();
         AuthService.saveCurrentUser(this.user);
@@ -766,6 +801,15 @@ class TaskView {
         this.bindTaskButtons();
     }
 
+    getFilteredEvents() {
+        return (this.user.events || []).filter(event => {
+            const status = event.getStatus();
+            const statusMatches = this.eventStatusFilter === "all" || status === this.eventStatusFilter;
+            const categoryMatches = this.eventCategoryFilter === "all" || event.category === this.eventCategoryFilter;
+            return statusMatches && categoryMatches;
+        }).slice();
+    }
+
     renderEventStats() {
         const total = this.user.events.length;
         const planned = this.user.events.filter(event => event.getStatus() === "Planeado").length;
@@ -779,14 +823,13 @@ class TaskView {
     }
 
     renderEvents() {
-        const events = this.user.events
-            .slice()
+        const events = this.getFilteredEvents()
             .sort((a, b) => this.getSortableDate(a.getStartDateTime()) - this.getSortableDate(b.getStartDateTime()));
 
         this.elements.eventList.innerHTML = "";
 
         if (events.length === 0) {
-            this.elements.eventList.innerHTML = `<li class="empty-state">Ainda não existem eventos de planeamento.</li>`;
+            this.elements.eventList.innerHTML = `<li class="empty-state">Ainda não existem eventos neste filtro.</li>`;
             return;
         }
 
@@ -891,6 +934,18 @@ class TaskView {
     }
 
 
+    getFilteredHabits() {
+        return (this.user.habits || []).filter(habit => {
+            if (this.habitTodayFilter === "done") {
+                return habit.isDoneToday();
+            }
+            if (this.habitTodayFilter === "pending") {
+                return !habit.isDoneToday();
+            }
+            return true;
+        }).slice();
+    }
+
     renderHabitStats() {
         const total = this.user.habits.length;
         const completedToday = this.user.habits.filter(habit => habit.isDoneToday()).length;
@@ -904,14 +959,13 @@ class TaskView {
     }
 
     renderHabits() {
-        const habits = this.user.habits
-            .slice()
+        const habits = this.getFilteredHabits()
             .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
         this.elements.habitList.innerHTML = "";
 
         if (habits.length === 0) {
-            this.elements.habitList.innerHTML = `<li class="empty-state">Ainda não existem hábitos diários.</li>`;
+            this.elements.habitList.innerHTML = `<li class="empty-state">Ainda não existem hábitos neste filtro.</li>`;
             return;
         }
 
@@ -1087,7 +1141,7 @@ class TaskView {
     getCalendarEntriesForDate(dateKey) {
         const entries = [];
 
-        // Itens próprios do calendário: são editáveis diretamente nesta secção.
+        
         (this.user.calendarItems || []).forEach(item => {
             if (item.date === dateKey) {
                 entries.push({
@@ -1106,7 +1160,7 @@ class TaskView {
             }
         });
 
-        // Tarefas: aparecem no calendário quando têm data limite.
+        
         (this.user.tasks || []).forEach(task => {
             if (task.dueDate === dateKey) {
                 entries.push({
@@ -1124,7 +1178,7 @@ class TaskView {
             }
         });
 
-        // Eventos: aparecem pelo menos no dia de início e no dia limite.
+        
         (this.user.events || []).forEach(planningEvent => {
             if (planningEvent.startDate === dateKey) {
                 entries.push({
@@ -1157,7 +1211,7 @@ class TaskView {
             }
         });
 
-        // Hábitos: aparecem nos dias em que foram marcados como concluídos.
+        
         (this.user.habits || []).forEach(habit => {
             habit.completedDates.forEach(completion => {
                 if (completion.date === dateKey) {
@@ -1177,7 +1231,11 @@ class TaskView {
             });
         });
 
-        return entries;
+        return entries.filter(entry => {
+            const categoryMatches = this.calendarCategoryFilter === "all" || entry.category === this.calendarCategoryFilter;
+            const typeMatches = this.calendarTypeFilter === "all" || entry.type === this.calendarTypeFilter;
+            return categoryMatches && typeMatches;
+        });
     }
 
     bindCalendarButtons() {

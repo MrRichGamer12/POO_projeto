@@ -1,10 +1,31 @@
-# FocusUp - POO_projeto-3
+# Foflux - POO_projeto-3
 
 ## Descrição
 
-O **FocusUp** é uma aplicação web inclusiva para ajudar jovens com TDAH a melhorar foco, organização e produtividade.
+O **Foflux** é uma aplicação web inclusiva desenvolvida para a unidade curricular de **Programação Orientada a Objetos**. O objetivo é apoiar jovens com dificuldades de foco, organização, procrastinação e gestão de rotinas, com especial atenção ao contexto de TDAH.
 
-A aplicação permite gerir tarefas, usar sessões Pomodoro, acompanhar conquistas, consultar estatísticas, editar perfil e aceder a uma área de administração. O projeto foi organizado com **HTML, CSS, JavaScript puro, Bootstrap via CDN, localStorage e JSON Server como Mock Server**.
+A aplicação permite organizar tarefas, planear eventos, criar hábitos diários, consultar calendário, usar Pomodoro, receber notificações, acompanhar estatísticas, desbloquear conquistas, consultar conteúdos de motivação, gerir perfil, usar bloco de notas, ver ranking e aceder a uma área de administração.
+
+## Objetivo da aplicação
+
+Ajudar o utilizador a:
+
+- organizar tarefas e prazos;
+- dividir trabalho em ações mais pequenas;
+- planear eventos e datas importantes;
+- criar hábitos diários realistas;
+- acompanhar progresso com estatísticas simples;
+- usar sessões Pomodoro para foco;
+- receber lembretes enquanto a app está aberta;
+- manter motivação com frases, dicas e links informativos;
+- registar notas rápidas;
+- perceber a sua evolução através de gamificação.
+
+## Público-alvo
+
+O projeto foi pensado para jovens estudantes ou utilizadores que sentem dificuldade em manter foco, organizar tarefas, cumprir prazos ou criar rotinas. A app tem uma linguagem simples, visual claro, feedback frequente e funcionalidades que incentivam pequenos passos.
+
+A aplicação não faz diagnóstico e não substitui apoio médico, psicológico ou profissional.
 
 ## Tecnologias usadas
 
@@ -12,65 +33,106 @@ A aplicação permite gerir tarefas, usar sessões Pomodoro, acompanhar conquist
 - CSS3
 - Bootstrap 5 via CDN
 - JavaScript ES Modules
+- Programação Orientada a Objetos com classes
 - localStorage
-- JSON Server
-- MVC simplificado
+- JSON Server como Mock Server
+- Web Notifications API
+- Live Server para execução local
 
-## Arquitetura
+## Arquitetura MVC simplificada
 
-O projeto segue uma organização inspirada no MVC simplificado:
+O projeto segue uma arquitetura MVC simplificada, organizada em três tipos principais de ficheiros:
 
-- `model/` - classes principais e entidades da aplicação.
-- `view/` - ficheiros que controlam a interface, eventos e DOM.
-- `service/` - serviços auxiliares para autenticação, armazenamento, estatísticas, conquistas e Mock Server.
+### Models
 
-## Funcionalidades existentes
+Representam entidades da aplicação e concentram dados e regras principais.
 
-- Landing page pública.
-- Login e registo de utilizadores.
-- Área privada após login.
-- Pomodoro e sessões de foco.
-- Gestão de tarefas com prioridade, prazo, estado e histórico de versões.
-- Eventos e Planeamento com data de início, data limite, estado e histórico de versões.
-- Hábitos Diários com conclusão por data, estado de hoje, sequência atual e histórico.
-- Calendário simples mensal com itens próprios e visualização de tarefas, eventos e hábitos por dia.
-- Badges, troféus e conquistas.
-- Estatísticas e gráficos simples em JavaScript puro.
-- Perfil do utilizador.
-- Modo administrador.
-- Persistência principal em `localStorage`.
-- Mock Server com `JSON Server` para simulação de dados.
-- Login com fallback para utilizadores simulados no `db.json`, quando ainda não existem no `localStorage`.
+Exemplos:
 
-## Dados de teste
+- `UserModel.js`
+- `TaskModel.js`
+- `EventModel.js`
+- `HabitModel.js`
+- `CalendarItemModel.js`
+- `FocusModel.js`
+- `BadgeModel.js`
+- `MotivationModel.js`
+- `NoteModel.js`
 
-### Administrador da aplicação local
+### Views
 
-- Email: `admin@admin.com`
-- Password: `admin123`
+Controlam a interface, os eventos do utilizador e a renderização no DOM.
 
-O administrador é criado automaticamente pelo `StorageService` quando a aplicação é iniciada.
+Exemplos:
 
-### Utilizador de teste no db.json
+- `taskView.js`
+- `pomodoroView.js`
+- `statisticsView.js`
+- `adminView.js`
+- `motivationView.js`
+- `notesView.js`
+- `rankingView.js`
 
-- Email: `teste@focusup.com`
-- Password: `teste123`
+### Services
 
-Este utilizador existe no `db.json` para demonstrar dados simulados no JSON Server. A partir da mini-etapa 1.1, se este utilizador ainda não existir no `localStorage`, a aplicação tenta carregá-lo do Mock Server no primeiro login e guarda uma cópia local.
+Centralizam operações auxiliares, persistência, autenticação, estatísticas, notificações e acesso ao Mock Server.
+
+Exemplos:
+
+- `AuthService.js`
+- `StorageService.js`
+- `MockApiService.js`
+- `StatsService.js`
+- `NotificationService.js`
+- `AchievementService.js`
+
+## Estrutura principal
+
+```text
+POO_projeto-3/
+│
+├── README.md
+├── package.json
+├── db.json
+├── .gitignore
+├── .vscode/
+│   └── settings.json
+│
+└── POO_PROJETO/
+    ├── index.html
+    ├── css/
+    │   └── styles.css
+    ├── html/
+    │   ├── about.html
+    │   ├── achievements.html
+    │   ├── admin.html
+    │   ├── dashboard.html
+    │   ├── home.html
+    │   ├── login.html
+    │   ├── motivation.html
+    │   ├── notes.html
+    │   ├── pomodoro.html
+    │   ├── profile.html
+    │   ├── ranking.html
+    │   ├── register.html
+    │   ├── statistics.html
+    │   └── tasks.html
+    └── js/
+        ├── init.js
+        ├── model/
+        ├── service/
+        └── view/
+```
 
 ## Como instalar dependências
 
-Na pasta principal do projeto, executar:
+Na pasta raiz do projeto:
 
 ```bash
 npm install
 ```
 
-Isto instala o `json-server`, usado apenas como Mock Server.
-
-## Como correr o JSON Server
-
-Na pasta principal do projeto, executar:
+## Como iniciar o JSON Server
 
 ```bash
 npm run mock-server
@@ -82,19 +144,10 @@ O Mock Server fica disponível em:
 http://localhost:3000
 ```
 
-Exemplos de endpoints:
+Para confirmar se está ativo:
 
 ```text
 http://localhost:3000/users
-http://localhost:3000/tasks
-http://localhost:3000/habits
-http://localhost:3000/events
-http://localhost:3000/calendarItems
-http://localhost:3000/pomodoroSessions
-http://localhost:3000/achievements
-http://localhost:3000/statistics
-http://localhost:3000/notifications
-http://localhost:3000/motivationLinks
 ```
 
 ## Como abrir a aplicação
@@ -103,413 +156,287 @@ http://localhost:3000/motivationLinks
 2. Usar a extensão **Live Server**.
 3. Abrir o ficheiro `index.html`.
 
-> Como o projeto usa JavaScript Modules (`type="module"`), é recomendado usar Live Server em vez de abrir diretamente o ficheiro no navegador.
+É recomendado usar Live Server porque o projeto usa `type="module"` nos ficheiros JavaScript.
 
-## Como testar se o Mock Server está ativo
+## Contas de teste
 
-1. Executar:
-
-```bash
-npm run mock-server
-```
-
-2. Abrir no navegador:
+### Administrador
 
 ```text
-http://localhost:3000/users
+Email: admin@admin.com
+Password: admin123
 ```
 
-3. Se aparecer uma lista de utilizadores em JSON, o Mock Server está ativo.
-
-A aplicação também faz uma verificação simples no `init.js`. Se o Mock Server não estiver ativo, a aplicação continua funcional usando `localStorage`.
-
-## Estrutura do projeto
-
-```text
-POO_projeto-3/
-│
-├── README.md
-├── package.json
-├── db.json
-├── .vscode/
-│   └── settings.json
-└── POO_PROJETO/
-    ├── index.html
-    ├── css/
-    │   └── styles.css
-    ├── html/
-    │   ├── about.html
-    │   ├── admin.html
-    │   ├── achievements.html
-    │   ├── dashboard.html
-    │   ├── home.html
-    │   ├── login.html
-    │   ├── pomodoro.html
-    │   ├── profile.html
-    │   ├── register.html
-    │   ├── statistics.html
-    │   └── tasks.html
-    └── js/
-        ├── init.js
-        ├── model/
-        │   ├── BadgeModel.js
-        │   ├── FocusModel.js
-        │   ├── GoalModel.js
-        │   ├── EventModel.js
-        │   ├── HabitModel.js
-        │   ├── CalendarItemModel.js
-        │   ├── TaskModel.js
-        │   └── UserModel.js
-        ├── service/
-        │   ├── AchievementService.js
-        │   ├── AuthService.js
-        │   ├── MockApiService.js
-        │   ├── StatsService.js
-        │   └── StorageService.js
-        └── view/
-            ├── achievementView.js
-            ├── adminView.js
-            ├── authView.js
-            ├── commonView.js
-            ├── dashboardView.js
-            ├── goalView.js
-            ├── homeView.js
-            ├── pomodoroView.js
-            ├── profileView.js
-            ├── publicView.js
-            ├── statisticsView.js
-            └── taskView.js
-```
-
-## Dados simulados no db.json
-
-O ficheiro `db.json` contém dados simulados para:
-
-- utilizadores;
-- administrador;
-- tarefas;
-- hábitos diários;
-- eventos de planeamento;
-- calendário e itens próprios do calendário;
-- sessões Pomodoro;
-- conquistas;
-- estatísticas;
-- perfil;
-- notificações;
-- links de motivação.
-
-## Observação importante sobre localStorage e JSON Server
-
-Nesta versão, o `localStorage` continua a ser a persistência principal da aplicação, porque é requisito do trabalho e já estava integrado no projeto.
-
-O `JSON Server` foi adicionado como Mock Server para simular dados externos e cumprir o requisito técnico da unidade curricular. A aplicação não depende dele para funcionar.
-
-### Login com localStorage e fallback para Mock Server
-
-A autenticação funciona da seguinte forma:
-
-1. Primeiro, a aplicação procura o utilizador no `localStorage`.
-2. Se encontrar, valida a password localmente e faz login normalmente.
-3. Se não encontrar no `localStorage`, tenta procurar o utilizador no JSON Server através do `MockApiService`.
-4. Se o email e a password existirem no `db.json`, a aplicação permite o login.
-5. Depois desse primeiro login, o utilizador vindo do Mock Server é guardado também no `localStorage`.
-6. A partir daí, esse utilizador passa a conseguir entrar mesmo que o JSON Server esteja desligado.
-
-Isto permite testar, por exemplo:
+### Utilizador de teste
 
 ```text
 Email: teste@focusup.com
 Password: teste123
 ```
 
-Para este login funcionar pela primeira vez, o JSON Server deve estar ativo. Depois do primeiro login, o utilizador fica guardado localmente.
+O email do utilizador de teste foi mantido para preservar compatibilidade com dados simulados e testes anteriores, mesmo após a mudança visual do nome da aplicação para Foflux.
 
-## Etapa 2 - Tarefas com prazos e versões
+## Estratégia de dados: JSON Server e localStorage
 
-A página **Tarefas e Hábitos** foi melhorada nesta etapa. As tarefas continuam guardadas no `localStorage`, mas agora possuem mais informação e melhor organização visual.
+O projeto usa duas camadas de dados:
 
-### Novos campos da tarefa
+### JSON Server
 
-Cada tarefa pode conter:
+O `db.json` simula uma API/backend. Ele contém dados iniciais de demonstração, como:
 
-- título;
-- prioridade: Baixa, Média ou Alta;
-- data e horário de criação automáticos;
-- data limite opcional;
-- horário limite opcional;
-- estado calculado automaticamente: Pendente, Concluída ou Atrasada;
-- histórico de versões.
+- utilizadores;
+- tarefas;
+- eventos;
+- hábitos;
+- itens de calendário;
+- sessões Pomodoro;
+- conquistas;
+- notificações;
+- frases e links de motivação;
+- notas.
 
-A data limite e o horário limite são opcionais. No entanto, se for definido um horário limite, deve existir também uma data limite.
+O `MockApiService.js` centraliza chamadas `fetch` para o JSON Server.
 
-### Filtros disponíveis
+### localStorage
 
-A lista de tarefas permite filtrar por:
+O `localStorage` é usado como persistência principal da aplicação durante a execução local. Ele guarda:
 
-- estado: Todos, Pendentes, Concluídas ou Atrasadas;
-- prioridade: Todos, Baixa, Média ou Alta.
+- utilizadores registados;
+- utilizador em sessão;
+- dados criados pelo utilizador;
+- tarefas, eventos, hábitos, calendário, notas e configurações Pomodoro.
 
-### Histórico de versões
+Quando o utilizador existe no JSON Server mas ainda não existe no `localStorage`, o login pode carregar esse utilizador do Mock Server e guardá-lo localmente.
 
-Sempre que uma tarefa é criada, editada ou concluída, a aplicação regista uma entrada no histórico. O botão **Ver versões** mostra:
+### Observação importante sobre segurança
 
-- data da alteração;
-- tipo da alteração;
-- valor anterior;
-- valor novo.
+Este é um projeto académico de front-end. As passwords aparecem em texto simples no `db.json` e no `localStorage` apenas para fins de simulação e demonstração.
 
-O `db.json` também foi atualizado com exemplos de tarefas contendo `createdAt`, `dueDate`, `dueTime`, `status` e `versionHistory`. Estes dados servem como simulação para o Mock Server.
+Numa aplicação real:
 
-### Como testar a Etapa 2
+- passwords nunca deveriam ser guardadas no localStorage;
+- o backend deveria guardar passwords com hash seguro;
+- o browser deveria guardar no máximo um token de sessão;
+- operações sensíveis deveriam ser validadas no servidor.
 
-1. Abrir a app com Live Server.
-2. Fazer login com um utilizador existente ou criar uma nova conta.
-3. Entrar em **Tarefas e Hábitos**.
-4. Criar uma tarefa sem data limite.
-5. Criar uma tarefa com data e horário limite.
-6. Criar uma tarefa com prazo anterior à data atual para ver o estado **Atrasada**.
-7. Filtrar por prioridade: Baixa, Média e Alta.
-8. Filtrar por estado: Pendentes, Concluídas e Atrasadas.
-9. Editar título, prioridade, data limite e horário limite.
-10. Clicar em **Ver versões** para consultar o histórico da tarefa.
-11. Concluir uma tarefa e confirmar que o estado e o histórico são atualizados.
+## Funcionalidades implementadas
 
+### Página pública
 
+- Landing page com explicação da aplicação.
+- Botões para login e registo.
+- Página Sobre.
 
-## Etapa 3 - Eventos e Planeamento
+### Autenticação
 
-A página **Tarefas e Hábitos** passou a incluir uma nova secção chamada **Eventos e Planeamento**. Esta funcionalidade foi adicionada sem remover as tarefas já existentes.
+- Registo de utilizador.
+- Login com localStorage.
+- Fallback de login via JSON Server.
+- Logout.
+- Proteção de páginas privadas.
+- Proteção da área Admin.
 
-### Campos dos eventos
+### Tarefas
 
-Cada evento de planeamento pode conter:
+- Criar, editar, concluir e remover tarefas.
+- Prioridade: Baixa, Média e Alta.
+- Data/hora limite opcional.
+- Estado: Pendente, Concluída ou Atrasada.
+- Filtros por estado e prioridade.
+- Histórico de versões.
+- Lembretes simples.
 
-- título;
-- descrição opcional;
-- categoria: Faculdade, Trabalho, Estudo, Projeto, Pessoal ou Outro;
-- data e horário de criação automáticos;
-- data de início;
-- horário de início opcional;
-- data limite;
-- horário limite opcional;
-- estado calculado automaticamente;
-- histórico de versões.
+### Eventos e Planeamento
 
-### Estados dos eventos
+- Criar, editar, concluir, reabrir e remover eventos.
+- Data/hora de início.
+- Data/hora limite.
+- Estado: Planeado, Em andamento, Concluído ou Atrasado.
+- Botão “Começar agora”.
+- Histórico de versões.
+- Filtros por estado e categoria.
+- Lembretes de início e limite.
 
-O estado é calculado pela aplicação com base nas datas e na conclusão:
+### Hábitos Diários
 
-- **Planeado**: ainda não chegou à data/hora de início;
-- **Em andamento**: já chegou à data/hora de início e ainda não passou o prazo;
-- **Atrasado**: a data/hora limite passou e o evento ainda não foi concluído;
-- **Concluído**: o utilizador marcou o evento como concluído.
+- Criar, editar e remover hábitos.
+- Marcar como feito hoje.
+- Desmarcar hábito feito hoje.
+- Estado diário: Feito hoje ou Pendente hoje.
+- Histórico por data.
+- Sequência atual.
+- Filtro por estado de hoje.
 
-### Mensagem de reflexão
+### Calendário
 
-Quando é criado um evento com data de início futura, a aplicação mostra uma mensagem de reflexão:
+- Visualização mensal.
+- Navegação entre meses.
+- Destaque do dia atual.
+- Destaque de dias com itens.
+- Itens próprios de calendário.
+- Exibição de tarefas, eventos e hábitos no calendário.
+- Filtros simples por categoria e tipo.
+
+### Notificações
+
+- Toasts visuais internos.
+- Web Notifications API quando o utilizador autoriza.
+- Lembretes para tarefas, eventos e calendário.
+- Notificações do Pomodoro.
+- Fallback visual se o navegador bloquear notificações.
+
+### Pomodoro
+
+- Perfis padrão.
+- Configurações personalizadas.
+- Tempo de foco em horas, minutos e segundos.
+- Tempo de pausa em horas, minutos e segundos.
+- Número de ciclos.
+- Guardar, selecionar e remover configurações personalizadas.
+- Pausar, retomar e reiniciar.
+- Registo de sessões concluídas.
+
+### Motivação
+
+- Frase motivacional do dia.
+- Frases aleatórias.
+- Sugestões práticas.
+- Links úteis por categoria.
+- Nota de responsabilidade.
+- Fallback local se o JSON Server estiver desligado.
+- Conquista “Primeira visita à Motivação”.
+
+### Bloco de Notas
+
+- Criar nota.
+- Editar nota.
+- Remover nota.
+- Pesquisar por título ou conteúdo.
+- Guardar data de criação e atualização.
+
+### Ranking
+
+- Ranking simples de utilizadores.
+- Pontuação calculada com base em uso da app.
+- Indicadores de tarefas, eventos, hábitos, Pomodoro, foco e conquistas.
+- Não mostra passwords nem dados sensíveis.
+
+### Estatísticas
+
+- Cards principais.
+- Tarefas por prioridade e estado.
+- Eventos por estado e categoria.
+- Hábitos concluídos por dia e semana.
+- Calendário por categoria e tipo.
+- Pomodoro por dia e semana.
+- Conquistas desbloqueadas e progresso geral.
+- Filtro de período: geral, hoje, últimos 7 dias e últimos 30 dias.
+
+### Admin
+
+- Acesso apenas para role `admin`.
+- Cards gerais da aplicação.
+- Lista de utilizadores.
+- Pesquisa por nome, email ou role.
+- Filtro por role.
+- Métricas por utilizador.
+- Editar nome, bio e role.
+- Remover utilizador com confirmação.
+- Proteção contra apagar a própria conta admin.
+- Proteção contra apagar o último administrador.
+
+## Perguntas prováveis na defesa
+
+### Onde está a persistência?
+
+- `StorageService.js` guarda e lê dados no localStorage.
+- `MockApiService.js` comunica com o JSON Server.
+
+### Onde está o MVC simplificado?
+
+- Models em `js/model/`.
+- Views em `js/view/`.
+- Services em `js/service/`.
+
+### Como a view comunica com os dados?
+
+As views importam Models e Services. Exemplo: `taskView.js` usa `TaskModel`, `EventModel`, `HabitModel`, `CalendarItemModel`, `AuthService` e `NotificationService`.
+
+### Como funciona o login com JSON Server?
+
+`AuthService.js` tenta primeiro o localStorage. Se o utilizador não existir localmente, tenta procurar no Mock Server via `MockApiService.js`. Se encontrar e a password estiver correta, guarda o utilizador no localStorage.
+
+### Como são calculadas as estatísticas?
+
+`StatsService.js` concentra os cálculos usados por Estatísticas, Admin e Ranking.
+
+### Como funcionam as notificações?
+
+`NotificationService.js` gere permissões do navegador, toasts internos e verificação periódica de lembretes enquanto a app está aberta.
+
+### Como funciona o ranking?
+
+`StatsService.getUserRanking()` calcula uma pontuação simples com tarefas concluídas, eventos concluídos, hábitos realizados, sessões Pomodoro, minutos de foco, conquistas, notas e variedade de utilização.
+
+## Checklist de teste final
+
+- [ ] Abrir com Live Server.
+- [ ] Iniciar JSON Server com `npm run mock-server`.
+- [ ] Testar login admin.
+- [ ] Testar login utilizador comum.
+- [ ] Testar registo.
+- [ ] Criar, editar, concluir e remover tarefa.
+- [ ] Criar, editar, concluir, reabrir e remover evento.
+- [ ] Criar, editar, marcar e desmarcar hábito.
+- [ ] Criar, editar e remover item de calendário.
+- [ ] Testar notificações visuais.
+- [ ] Testar notificações do navegador.
+- [ ] Criar Pomodoro customizado.
+- [ ] Concluir sessão Pomodoro.
+- [ ] Abrir Motivação.
+- [ ] Criar e pesquisar notas.
+- [ ] Consultar Ranking.
+- [ ] Consultar Estatísticas.
+- [ ] Entrar no Admin.
+- [ ] Confirmar que utilizador comum não acede ao Admin.
+- [ ] Desligar JSON Server e confirmar que a app continua funcional com dados locais já guardados.
+- [ ] Confirmar que `node_modules/` não vai para o GitHub.
+
+## `.gitignore`
+
+O projeto inclui `.gitignore` com:
 
 ```text
-Tens certeza de que não queres começar esta tarefa agora? Às vezes subestimamos o tempo necessário.
+node_modules/
+.DS_Store
+.env
+.vscode/.history/
 ```
 
-Também é apresentado o botão **Começar agora**, que atualiza a data e a hora de início do evento para o momento atual.
+## Limitações conhecidas
 
-### Histórico de versões dos eventos
+- O projeto é front-end académico, sem backend real.
+- O JSON Server é apenas Mock Server.
+- O localStorage é usado para persistência local e não é adequado para guardar passwords numa aplicação real.
+- As notificações só funcionam enquanto a aplicação está aberta.
+- Não existe Service Worker nem Push API.
+- Os gráficos são simples, feitos com HTML/CSS/JS puro.
+- O ranking é uma métrica gamificada simples, não uma avaliação real de produtividade.
+- Alguns diálogos simples ainda usam `confirm()` por segurança e simplicidade.
 
-O botão **Ver versões** mostra alterações como:
+## Observações finais para entrega
 
-- criação do evento;
-- alteração de título;
-- alteração de descrição;
-- alteração de data/hora de início;
-- alteração de data/hora limite;
-- alteração de categoria;
-- uso do botão Começar agora;
-- alteração de estado;
-- remoção do evento, registada antes da eliminação.
+O Foflux cumpre os requisitos principais do trabalho:
 
-### Como testar a Etapa 3
-
-1. Abrir a app com Live Server.
-2. Fazer login com um utilizador existente ou criar uma nova conta.
-3. Entrar em **Tarefas e Hábitos**.
-4. Criar um evento com data de início futura e data limite.
-5. Confirmar que aparece a mensagem de reflexão.
-6. Clicar em **Começar agora** e verificar se a data/hora de início muda para o momento atual.
-7. Criar um evento com prazo já ultrapassado para ver o estado **Atrasado**.
-8. Editar título, descrição, categoria, data de início e data limite.
-9. Clicar em **Ver versões** para consultar o histórico.
-10. Marcar o evento como concluído e confirmar que o estado muda para **Concluído**.
-11. Reabrir o evento e confirmar que o histórico regista a alteração.
-
-O `db.json` foi atualizado com exemplos de eventos contendo `createdAt`, `startDate`, `startTime`, `dueDate`, `dueTime`, `category`, `status` e `versionHistory`. Estes dados servem como simulação para o Mock Server.
-
-
-## Etapa 4 - Hábitos Diários
-
-A página **Tarefas e Hábitos** passou a incluir uma nova secção chamada **Hábitos Diários**. Esta funcionalidade foi adicionada por cima da Etapa 3, sem remover tarefas, eventos, login, registo, JSON Server ou localStorage.
-
-### Campos dos hábitos
-
-Cada hábito diário pode conter:
-
-- título;
-- descrição opcional;
-- data e horário de criação automáticos;
-- estado do dia atual: Feito ou Pendente;
-- lista de datas concluídas;
-- histórico de alterações e ações diárias.
-
-### Regra principal
-
-O hábito não é uma tarefa concluída para sempre. Ele repete-se todos os dias:
-
-- se o utilizador marcar o hábito como feito hoje, ele fica feito apenas na data atual;
-- no dia seguinte, o mesmo hábito volta a aparecer como pendente;
-- as conclusões anteriores ficam guardadas no histórico por data.
-
-### Ações disponíveis
-
-Na lista de hábitos, o utilizador pode:
-
-- criar hábito diário;
-- editar título e descrição;
-- remover hábito;
-- marcar como feito hoje;
-- desmarcar o dia atual;
-- consultar total de dias concluídos;
-- consultar sequência atual;
-- clicar em **Ver histórico** para ver conclusões por data e alterações do hábito.
-
-### Como testar a Etapa 4
-
-1. Abrir a app com Live Server.
-2. Fazer login com um utilizador existente ou criar uma nova conta.
-3. Entrar em **Tarefas e Hábitos**.
-4. Criar um hábito diário, por exemplo: `Estudar 30 minutos`.
-5. Confirmar que o hábito aparece como **Pendente hoje**.
-6. Clicar em **Marcar como feito hoje**.
-7. Confirmar que o estado muda para **Feito hoje**.
-8. Clicar em **Desmarcar hoje** e confirmar que volta a ficar pendente.
-9. Editar o título ou a descrição.
-10. Clicar em **Ver histórico** para consultar datas concluídas e alterações.
-11. Confirmar que o painel de estatísticas de hábitos atualiza os totais.
-
-O `db.json` foi atualizado com exemplos de hábitos contendo `createdAt`, `completedDates`, `history` e `statusToday`. Estes dados servem como simulação para o Mock Server.
-
-
-## Etapa 5 - Calendário simples
-
-A página **Tarefas e Hábitos** passou a incluir uma secção final chamada **Calendário**. Esta funcionalidade foi adicionada por cima da Etapa 4, sem remover tarefas, eventos, hábitos, login, registo, JSON Server ou localStorage.
-
-### O que o calendário mostra
-
-O calendário apresenta uma vista mensal simples e permite navegar entre meses. Cada dia pode destacar a existência de itens associados a essa data.
-
-O calendário mostra dados vindos de quatro fontes:
-
-- itens próprios de calendário criados pelo utilizador;
-- tarefas com data limite;
-- eventos com data de início e/ou data limite;
-- hábitos concluídos numa data específica.
-
-As tarefas, eventos e hábitos aparecem apenas como informação no calendário. A edição direta dessas entidades continua a ser feita nas respetivas secções da página, para evitar duplicação de lógica e preservar o funcionamento já testado.
-
-### Itens próprios do calendário
-
-Cada item próprio do calendário pode conter:
-
-- título;
-- descrição opcional;
-- categoria: Faculdade, Trabalho, Estudo, Teste, Apresentação, Projeto, Pessoal ou Outro;
-- tipo: Aula, Trabalho, Teste, Apresentação, Projeto, Estudo, Evento pessoal ou Outro;
-- data;
-- horário opcional;
-- data/hora de criação automática;
-- histórico simples de alterações.
-
-### Ações disponíveis
-
-Na secção Calendário, o utilizador pode:
-
-- navegar para o mês anterior;
-- navegar para o mês seguinte;
-- voltar ao dia atual;
-- clicar num dia para ver os itens desse dia;
-- criar item próprio de calendário;
-- editar item próprio de calendário;
-- remover item próprio de calendário.
-
-### Como testar a Etapa 5
-
-1. Abrir a app com Live Server.
-2. Fazer login com um utilizador existente ou criar uma nova conta.
-3. Entrar em **Tarefas e Hábitos**.
-4. Descer até à secção **Calendário**.
-5. Navegar entre meses com **Mês anterior** e **Mês seguinte**.
-6. Clicar em **Hoje** para voltar ao mês atual.
-7. Criar um item próprio, por exemplo: `Teste de JavaScript`.
-8. Confirmar que o dia fica destacado no calendário.
-9. Clicar no dia e confirmar que o item aparece no painel lateral.
-10. Editar o item próprio de calendário.
-11. Remover o item próprio de calendário.
-12. Criar uma tarefa com data limite e confirmar que aparece nesse dia no calendário.
-13. Criar um evento com data de início e data limite e confirmar que aparece pelo menos nesses dois dias.
-14. Marcar um hábito como feito hoje e confirmar que aparece no dia atual.
-
-O `db.json` foi atualizado com exemplos de itens de calendário contendo `id`, `userEmail`, `title`, `description`, `category`, `type`, `date`, `time`, `createdAt` e `history`. Estes dados servem como simulação para o Mock Server.
-
-## Próximas melhorias recomendadas
-
-- Integrar progressivamente tarefas, eventos e calendário com o `MockApiService`, se for necessário demonstrar CRUD completo no Mock Server.
-- Evoluir o calendário simples para incluir notificações personalizadas e visualização mais avançada.
-- Adicionar notificações com Web Notifications API.
-- Criar Pomodoro totalmente customizável com horas, minutos, segundos e ciclos.
-- Criar página de Motivação.
-- Melhorar estatísticas com hábitos, eventos, tarefas atrasadas e calendário.
-
-## Etapa 6 - Notificações
-
-Nesta etapa foi adicionada uma base simples e segura de notificações para a aplicação.
-
-### O que foi acrescentado
-
-- Novo serviço `NotificationService.js` para centralizar:
-  - pedido de permissão ao navegador;
-  - notificações visuais internas;
-  - notificações do navegador através da Web Notifications API;
-  - leitura de lembretes guardados no utilizador;
-  - verificação periódica de lembretes;
-  - marcação de lembretes como enviados para evitar repetições.
-- Área de notificações na página `Tarefas e Hábitos`.
-- Lembretes simples para tarefas com data/hora limite.
-- Lembretes simples para eventos, antes do início e antes da data limite.
-- Lembretes simples para itens próprios do calendário.
-- Exemplos de lembretes no `db.json`.
-
-### Como funcionam as notificações
-
-A aplicação usa duas camadas:
-
-1. Notificação visual interna, em formato toast, dentro da própria aplicação.
-2. Notificação do navegador, apenas se o utilizador der permissão.
-
-As notificações do navegador funcionam enquanto a aplicação estiver aberta numa aba do navegador. Não foi usado Service Worker nem Push API, porque isso ficaria fora do objetivo desta etapa.
-
-### Como testar
-
-1. Abrir a aplicação com Live Server.
-2. Fazer login.
-3. Entrar em `Tarefas e Hábitos`.
-4. Clicar em `Permitir notificações`.
-5. Criar uma tarefa com data e horário limite próximos.
-6. Escolher um lembrete, por exemplo `10 minutos antes` ou `No momento do prazo`.
-7. Aguardar o momento do lembrete.
-8. Confirmar que aparece uma notificação visual dentro da app.
-9. Se o navegador tiver permissão, confirmar também a notificação do navegador.
-10. Repetir o teste com eventos e itens próprios do calendário.
-
-### Observação importante
-
-Se a permissão do navegador for negada, a aplicação continua funcional e usa apenas as notificações visuais internas.
-
+- HTML, CSS e JavaScript;
+- Bootstrap para estilização;
+- JSON Server como Mock Server;
+- localStorage para persistência;
+- arquitetura MVC simplificada;
+- classes e objetos em JavaScript;
+- funcionalidades dinâmicas para utilizador autenticado;
+- área pública para visitante;
+- área Admin;
+- gamificação;
+- notificações;
+- design responsivo básico.

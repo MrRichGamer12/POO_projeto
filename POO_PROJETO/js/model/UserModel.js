@@ -1,7 +1,10 @@
+
 import TaskModel from "./TaskModel.js";
 import EventModel from "./EventModel.js";
 import HabitModel from "./HabitModel.js";
 import CalendarItemModel from "./CalendarItemModel.js";
+import FocusModel from "./FocusModel.js";
+import NoteModel from "./NoteModel.js";
 
 export default class UserModel {
 
@@ -12,6 +15,7 @@ export default class UserModel {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.createdAt = new Date().toISOString();
 
         this.bio = "";
         this.photo = "";
@@ -24,6 +28,8 @@ export default class UserModel {
         this.events = [];
         this.habits = [];
         this.calendarItems = [];
+        this.notes = [];
+        this.customFocusProfiles = [];
         this.focusHistory = [];
         this.badges = [];
 
@@ -32,7 +38,8 @@ export default class UserModel {
             tasksCreated: 0,
             tasksCompleted: 0,
             activityDates: [],
-            lastUsed: "home"
+            lastUsed: "home",
+            motivationVisits: 0
         };
     }
 
@@ -51,6 +58,7 @@ export default class UserModel {
         user.username = email;
         user.name = data.name || data.username || email;
         user.role = data.role || "user";
+        user.createdAt = data.createdAt || data.registeredAt || user.createdAt;
         user.bio = data.bio || "";
         user.photo = data.photo || "";
 
@@ -62,6 +70,8 @@ export default class UserModel {
         user.events = Array.isArray(data.events) ? data.events : [];
         user.habits = Array.isArray(data.habits) ? data.habits : [];
         user.calendarItems = Array.isArray(data.calendarItems) ? data.calendarItems : [];
+        user.notes = Array.isArray(data.notes) ? data.notes : [];
+        user.customFocusProfiles = Array.isArray(data.customFocusProfiles) ? data.customFocusProfiles : [];
         user.focusHistory = Array.isArray(data.focusHistory) ? data.focusHistory : [];
         user.badges = Array.isArray(data.badges) ? data.badges : [];
 
@@ -70,21 +80,28 @@ export default class UserModel {
             tasksCreated: Number(data.stats?.tasksCreated) || user.tasks.length,
             tasksCompleted: Number(data.stats?.tasksCompleted) || user.tasks.filter(task => task.completed).length,
             activityDates: Array.isArray(data.stats?.activityDates) ? data.stats.activityDates : [],
-            lastUsed: data.stats?.lastUsed || "home"
+            lastUsed: data.stats?.lastUsed || "home",
+            motivationVisits: Number(data.stats?.motivationVisits) || 0
         };
 
-        // Reidrata as tarefas guardadas no localStorage para voltarem a ter os métodos da classe TaskModel.
-        // Também migra tarefas antigas que ainda não tinham data limite ou histórico de versões.
+        
+        
         user.tasks = user.tasks.map(task => TaskModel.fromObject(task));
 
-        // Reidrata eventos de planeamento para manter métodos e histórico após leitura do localStorage.
+        
         user.events = user.events.map(event => EventModel.fromObject(event));
 
-        // Reidrata hábitos diários para que voltem a ter métodos como isDoneToday() e getCurrentStreak().
+        
         user.habits = user.habits.map(habit => HabitModel.fromObject(habit));
 
-        // Reidrata itens próprios do calendário para manter métodos de edição e histórico.
+        
         user.calendarItems = user.calendarItems.map(item => CalendarItemModel.fromObject(item));
+
+        
+        user.notes = user.notes.map(note => NoteModel.fromObject(note));
+
+        
+        user.customFocusProfiles = user.customFocusProfiles.map(profile => FocusModel.fromObject(profile));
 
         user.focusHistory = user.focusHistory.map(session => ({
             id: session.id || `${Date.now()}-${Math.floor(Math.random() * 100000)}`,

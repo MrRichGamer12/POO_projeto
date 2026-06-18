@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarefas e Hábitos - FocusUp</title>
+    <title>Tarefas e Hábitos - Foflux</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
@@ -239,10 +239,31 @@
         </section>
 
         <section class="card">
-            <div class="section-title-row">
+            <div class="section-title-row task-filter-header">
                 <div>
                     <h2>Lista de eventos</h2>
                     <p class="text-muted mb-0">Consulta o estado, antecipa o início ou vê o histórico de alterações.</p>
+                </div>
+                <div class="task-filter-group">
+                    <label for="eventStatusFilter">Estado</label>
+                    <select id="eventStatusFilter" aria-label="Filtrar eventos por estado">
+                        <option value="all">Todos</option>
+                        <option value="Planeado">Planeados</option>
+                        <option value="Em andamento">Em andamento</option>
+                        <option value="Concluído">Concluídos</option>
+                        <option value="Atrasado">Atrasados</option>
+                    </select>
+
+                    <label for="eventCategoryFilter">Categoria</label>
+                    <select id="eventCategoryFilter" aria-label="Filtrar eventos por categoria">
+                        <option value="all">Todas</option>
+                        <option value="Faculdade">Faculdade</option>
+                        <option value="Trabalho">Trabalho</option>
+                        <option value="Estudo">Estudo</option>
+                        <option value="Projeto">Projeto</option>
+                        <option value="Pessoal">Pessoal</option>
+                        <option value="Outro">Outro</option>
+                    </select>
                 </div>
             </div>
             <ul id="eventList" class="item-list event-list"></ul>
@@ -298,10 +319,18 @@
         </section>
 
         <section class="card">
-            <div class="section-title-row">
+            <div class="section-title-row task-filter-header">
                 <div>
                     <h2>Lista de hábitos diários</h2>
                     <p class="text-muted mb-0">Marca o que fizeste hoje e acompanha o histórico por data.</p>
+                </div>
+                <div class="task-filter-group">
+                    <label for="habitTodayFilter">Estado de hoje</label>
+                    <select id="habitTodayFilter" aria-label="Filtrar hábitos pelo estado de hoje">
+                        <option value="all">Todos</option>
+                        <option value="done">Feitos hoje</option>
+                        <option value="pending">Pendentes hoje</option>
+                    </select>
                 </div>
             </div>
             <ul id="habitList" class="item-list habit-list"></ul>
@@ -321,6 +350,37 @@
                     <button type="button" id="calendarPrevMonth" class="secondary-button">Mês anterior</button>
                     <button type="button" id="calendarToday" class="secondary-button">Hoje</button>
                     <button type="button" id="calendarNextMonth" class="secondary-button">Mês seguinte</button>
+                </div>
+            </div>
+
+            <div class="calendar-filter-row">
+                <div>
+                    <label for="calendarCategoryFilter">Filtrar categoria</label>
+                    <select id="calendarCategoryFilter" aria-label="Filtrar calendário por categoria">
+                        <option value="all">Todas</option>
+                        <option value="Faculdade">Faculdade</option>
+                        <option value="Trabalho">Trabalho</option>
+                        <option value="Estudo">Estudo</option>
+                        <option value="Teste">Teste</option>
+                        <option value="Apresentação">Apresentação</option>
+                        <option value="Projeto">Projeto</option>
+                        <option value="Pessoal">Pessoal</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="calendarTypeFilter">Filtrar tipo</label>
+                    <select id="calendarTypeFilter" aria-label="Filtrar calendário por tipo">
+                        <option value="all">Todos</option>
+                        <option value="Aula">Aula</option>
+                        <option value="Trabalho">Trabalho</option>
+                        <option value="Teste">Teste</option>
+                        <option value="Apresentação">Apresentação</option>
+                        <option value="Projeto">Projeto</option>
+                        <option value="Estudo">Estudo</option>
+                        <option value="Evento pessoal">Evento pessoal</option>
+                        <option value="Outro">Outro</option>
+                    </select>
                 </div>
             </div>
 

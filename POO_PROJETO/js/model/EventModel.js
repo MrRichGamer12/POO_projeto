@@ -1,5 +1,5 @@
-// Modelo responsável por representar um evento ou item de planeamento.
-// Guarda datas de início/limite, estado calculado e histórico de versões.
+
+
 export default class EventModel {
 
     constructor(title, description = "", startDate = "", startTime = "", dueDate = "", dueTime = "", category = "Faculdade") {
@@ -20,13 +20,13 @@ export default class EventModel {
         this.addVersion("Criação do evento", "", this.title, this.createdAt);
     }
 
-    // Mantém as categorias controladas para evitar valores inconsistentes no localStorage.
+    
     normalizeCategory(category) {
         const allowedCategories = ["Faculdade", "Trabalho", "Estudo", "Projeto", "Pessoal", "Outro"];
         return allowedCategories.includes(category) ? category : "Outro";
     }
 
-    // Normaliza lembretes vindos do localStorage ou do Mock Server.
+    
     normalizeReminders(reminders = []) {
         return Array.isArray(reminders)
             ? reminders.map(reminder => ({
@@ -42,7 +42,7 @@ export default class EventModel {
             : [];
     }
 
-    // Atualiza lembretes e mantém registo no histórico do evento.
+    
     setReminders(reminders = []) {
         const normalized = this.normalizeReminders(reminders);
         const oldValue = this.reminders.map(reminder => `${reminder.trigger}: ${reminder.label}`).join(", ") || "Sem lembrete";
@@ -55,7 +55,7 @@ export default class EventModel {
         this.reminders = normalized;
     }
 
-    // Reinicia lembretes quando datas de início ou limite mudam.
+    
     resetReminderDelivery(trigger = null) {
         this.reminders = this.reminders.map(reminder => {
             if (!trigger || reminder.trigger === trigger) {
@@ -65,7 +65,7 @@ export default class EventModel {
         });
     }
 
-    // Regista uma mudança no histórico, de forma semelhante ao histórico das tarefas.
+    
     addVersion(type, oldValue = "", newValue = "", date = new Date().toISOString()) {
         this.versionHistory.push({
             id: `${Date.now()}-${Math.floor(Math.random() * 100000)}`,
@@ -157,7 +157,7 @@ export default class EventModel {
         this.setCategory(category);
     }
 
-    // Permite antecipar o início quando o utilizador decide começar imediatamente.
+    
     startNow() {
         const now = new Date();
         const oldStart = this.formatStartValue();

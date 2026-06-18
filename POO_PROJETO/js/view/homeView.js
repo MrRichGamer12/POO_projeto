@@ -34,6 +34,9 @@ function translateFeatureName(feature) {
         tasks: "Tarefas e Hábitos",
         achievements: "Conquistas",
         statistics: "Estatísticas",
+        motivation: "Motivação",
+        notes: "Notas",
+        ranking: "Ranking",
         profile: "Perfil",
         admin: "Administração"
     };

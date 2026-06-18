@@ -1,14 +1,14 @@
 import AuthService from "../service/AuthService.js";
 import NotificationService from "../service/NotificationService.js";
 
-// View comum usada pelas páginas privadas.
-// Centraliza a navegação, proteção visual da área privada e mensagens/toasts.
+
+
 export function renderNavbar() {
     return renderPrivateNavbar("home");
 }
 
-// Renderiza o cabeçalho privado com classes do Bootstrap e classes próprias do projeto.
-// O link Admin só aparece quando o utilizador autenticado tem role de administrador.
+
+
 export function renderPrivateNavbar(activePage = "home") {
     const user = AuthService.getCurrentUser();
     const adminLink = user?.role === "admin"
@@ -18,7 +18,7 @@ export function renderPrivateNavbar(activePage = "home") {
     return `
         <header class="private-navbar navbar navbar-expand-lg shadow-sm">
             <div class="container-fluid app-nav-container">
-                <a class="brand navbar-brand" href="home.html">FocusUp</a>
+                <a class="brand navbar-brand" href="home.html">Foflux</a>
 
                 <nav class="navbar-center nav nav-pills" aria-label="Navegação principal">
                     <a class="nav-link ${activePage === "home" ? "active" : ""}" href="home.html">Início</a>
@@ -26,6 +26,9 @@ export function renderPrivateNavbar(activePage = "home") {
                     <a class="nav-link ${activePage === "tasks" ? "active" : ""}" href="tasks.html">Tarefas e Hábitos</a>
                     <a class="nav-link ${activePage === "achievements" ? "active" : ""}" href="achievements.html">Conquistas</a>
                     <a class="nav-link ${activePage === "statistics" ? "active" : ""}" href="statistics.html">Estatísticas</a>
+                    <a class="nav-link ${activePage === "motivation" ? "active" : ""}" href="motivation.html">Motivação</a>
+                    <a class="nav-link ${activePage === "notes" ? "active" : ""}" href="notes.html">Notas</a>
+                    <a class="nav-link ${activePage === "ranking" ? "active" : ""}" href="ranking.html">Ranking</a>
                     ${adminLink}
                 </nav>
 
@@ -39,8 +42,8 @@ export function renderPrivateNavbar(activePage = "home") {
     `;
 }
 
-// Inicializa páginas privadas: autentica, desenha menu, marca última área usada
-// e cria o container global de notificações visuais.
+
+
 export function initPrivatePage(activePage, options = {}) {
     AuthService.initialize();
 
@@ -63,7 +66,7 @@ export function initPrivatePage(activePage, options = {}) {
 
     createToastContainer();
 
-    // Ativa a verificação global de lembretes em todas as páginas privadas.
+    
     NotificationService.start({
         getUser: () => AuthService.getCurrentUser(),
         saveUser: updatedUser => AuthService.saveCurrentUser(updatedUser)
@@ -72,7 +75,7 @@ export function initPrivatePage(activePage, options = {}) {
     return user;
 }
 
-// Mostra mensagens simples nos formulários sem usar alert.
+
 export function showMessage(element, text, type = "") {
     if (!element) {
         return;
@@ -82,7 +85,7 @@ export function showMessage(element, text, type = "") {
     element.className = `message ${type}`.trim();
 }
 
-// Notificação visual reutilizável para conquistas desbloqueadas.
+
 export function showBadgeNotifications(badges) {
     if (!badges || badges.length === 0) {
         return;
@@ -106,7 +109,7 @@ export function showBadgeNotifications(badges) {
     });
 }
 
-// Container fixo para mensagens visuais internas da aplicação.
+
 export function createToastContainer() {
     let container = document.getElementById("toastContainer");
 
@@ -120,7 +123,7 @@ export function createToastContainer() {
     return container;
 }
 
-// Evita redirecionamentos para páginas fora da aplicação.
+
 export function safeRedirectTarget(target, fallback = "home.html") {
     const allowedPages = [
         "home.html",
@@ -129,6 +132,9 @@ export function safeRedirectTarget(target, fallback = "home.html") {
         "tasks.html",
         "achievements.html",
         "statistics.html",
+        "motivation.html",
+        "notes.html",
+        "ranking.html",
         "profile.html",
         "admin.html"
     ];

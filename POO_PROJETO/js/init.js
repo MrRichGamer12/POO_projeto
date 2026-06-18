@@ -1,8 +1,8 @@
 import AuthService from "./service/AuthService.js";
 import MockApiService from "./service/MockApiService.js";
 
-// Arranque global da aplicação.
-// Garante utilizador admin de teste e verifica, sem bloquear, se o JSON Server está ativo.
+
+
 AuthService.initialize();
 
 MockApiService.isAvailable().then(isAvailable => {
@@ -13,4 +13,4 @@ MockApiService.isAvailable().then(isAvailable => {
     );
 });
 
-console.log("Aplicação FocusUp iniciada.");
+console.log("Aplicação Foflux iniciada.");

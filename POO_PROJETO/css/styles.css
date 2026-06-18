@@ -790,7 +790,7 @@ th {
     }
 }
 
-/* Etapa 2 - melhorias específicas da página de Tarefas e Hábitos */
+
 .task-form-extended {
     grid-template-columns: 1.35fr 160px 160px 150px auto;
     align-items: end;
@@ -986,7 +986,7 @@ th {
     }
 }
 
-/* Etapa 3 - eventos e planeamento dentro da página de Tarefas e Hábitos */
+
 .planning-card {
     border-left: 6px solid var(--primary);
 }
@@ -1118,7 +1118,7 @@ th {
     }
 }
 
-/* Etapa 4 - hábitos diários dentro da página de Tarefas e Hábitos */
+
 .habits-card {
     border-left: 6px solid var(--success);
 }
@@ -1185,7 +1185,7 @@ th {
     }
 }
 
-/* Etapa 5 - calendário simples dentro da página de Tarefas e Hábitos */
+
 .calendar-card {
     border-left: 6px solid var(--primary);
 }
@@ -1422,7 +1422,7 @@ th {
     }
 }
 
-/* Etapa 6 - notificações internas e lembretes simples */
+
 .notification-settings-card {
     border-left: 6px solid #7c5cff;
 }
@@ -1555,5 +1555,543 @@ th {
     .event-description-field,
     .calendar-description-field {
         grid-column: auto;
+    }
+}
+
+
+.notification-permission-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.custom-pomodoro-form {
+    display: grid;
+    gap: 18px;
+}
+
+.two-columns-form,
+.pomodoro-duration-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.duration-fieldset {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+    background-color: #fbfdff;
+}
+
+.duration-fieldset legend {
+    width: auto;
+    float: none;
+    padding: 0 8px;
+    margin-bottom: 8px;
+    color: var(--primary-dark);
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.duration-inputs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.pomodoro-select-row {
+    grid-template-columns: 1fr auto;
+}
+
+@media (max-width: 760px) {
+    .notification-permission-card,
+    .two-columns-form,
+    .pomodoro-duration-grid,
+    .duration-inputs,
+    .pomodoro-select-row {
+        grid-template-columns: 1fr;
+    }
+
+    .notification-permission-card {
+        align-items: stretch;
+    }
+}
+
+
+.motivation-page {
+    display: grid;
+    gap: 24px;
+}
+
+.motivation-hero {
+    padding: 34px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at top right, rgba(74, 144, 226, 0.16), transparent 32%),
+        linear-gradient(135deg, #ffffff, #f7fbff);
+    box-shadow: var(--shadow);
+}
+
+.motivation-top-grid {
+    margin-top: 0;
+}
+
+.motivation-quote-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+}
+
+.motivation-quote {
+    margin: 10px 0 12px;
+    color: var(--primary-dark);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 800;
+    line-height: 1.22;
+}
+
+.motivation-category {
+    margin-top: auto;
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.motivation-disclaimer {
+    border-left: 6px solid var(--warning);
+    background-color: #fffaf0;
+}
+
+.motivation-tips-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.motivation-tip-card {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background-color: #fbfdff;
+}
+
+.motivation-tip-card h3 {
+    margin-bottom: 8px;
+    color: var(--primary-dark);
+    font-size: 18px;
+}
+
+.motivation-tip-card p {
+    margin-bottom: 0;
+    color: var(--muted);
+}
+
+.motivation-links {
+    display: grid;
+    gap: 18px;
+}
+
+.motivation-link-category {
+    display: grid;
+    gap: 12px;
+}
+
+.motivation-link-category h3 {
+    margin: 0;
+    color: var(--primary-dark);
+}
+
+.motivation-link-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background-color: #ffffff;
+}
+
+.motivation-link-card h4 {
+    margin: 10px 0 6px;
+    font-size: 18px;
+}
+
+.motivation-link-card p {
+    margin-bottom: 0;
+    color: var(--muted);
+}
+
+@media (max-width: 920px) {
+    .motivation-tips-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .motivation-link-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .motivation-tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.message.warning {
+    color: #946200;
+}
+
+
+.admin-summary-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.admin-panel-card {
+    display: grid;
+    gap: 18px;
+}
+
+.admin-title-row {
+    align-items: flex-start;
+}
+
+.admin-filters {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background-color: #f8fbff;
+}
+
+.admin-table-wrapper {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background-color: white;
+}
+
+.admin-table {
+    min-width: 1280px;
+}
+
+.admin-table th {
+    white-space: nowrap;
+}
+
+.admin-table td {
+    font-size: 14px;
+}
+
+.admin-bio-cell {
+    max-width: 220px;
+    color: var(--muted);
+}
+
+.admin-metric-stack {
+    display: grid;
+    gap: 4px;
+    min-width: 110px;
+}
+
+.admin-metric-stack span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.admin-metric-stack strong {
+    color: var(--primary-dark);
+}
+
+.admin-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 110px;
+}
+
+.admin-actions button {
+    width: 100%;
+    min-height: 34px;
+    padding: 7px 10px;
+    margin: 0;
+    font-size: 13px;
+}
+
+.role-admin {
+    background-color: #e8f1fc;
+    color: var(--primary-dark);
+}
+
+.role-user {
+    background-color: #e8f8ef;
+    color: #1f7a4b;
+}
+
+
+.statistics-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.statistics-filter-card {
+    width: min(260px, 100%);
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background-color: rgba(255, 255, 255, 0.88);
+    box-shadow: var(--shadow-soft);
+}
+
+.statistics-filter-card label {
+    display: block;
+    margin: 0 0 8px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.statistics-summary-grid {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.statistics-grid {
+    align-items: start;
+}
+
+.statistics-panel {
+    display: grid;
+    gap: 16px;
+}
+
+.statistics-panel .section-title-row {
+    margin-bottom: 4px;
+}
+
+.statistics-panel h2 {
+    margin-bottom: 0;
+}
+
+.chart-subtitle {
+    margin: 8px 0 -4px;
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0;
+}
+
+.statistics-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background-color: var(--primary-soft);
+    color: var(--primary-dark);
+    font-size: 13px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.statistics-inline-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.statistics-inline-metrics div {
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background-color: #f8fbff;
+}
+
+.statistics-inline-metrics strong {
+    display: block;
+    color: var(--primary-dark);
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.statistics-inline-metrics span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.statistics-chart-row {
+    grid-template-columns: minmax(110px, 0.65fr) minmax(120px, 1.4fr) 44px;
+}
+
+.statistics-list {
+    display: grid;
+    gap: 10px;
+}
+
+.statistics-list-item {
+    display: grid;
+    gap: 4px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background-color: #fbfdff;
+}
+
+.statistics-list-item strong {
+    color: var(--text);
+}
+
+.statistics-list-item span,
+.statistics-list-item small {
+    color: var(--muted);
+}
+
+.achievement-progress-large {
+    display: grid;
+    gap: 10px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background-color: #f8fbff;
+}
+
+.achievement-progress-large p {
+    margin: 0;
+    color: var(--muted);
+    font-weight: 700;
+}
+
+@media (max-width: 920px) {
+    .statistics-heading {
+        flex-direction: column;
+    }
+
+    .statistics-filter-card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .statistics-inline-metrics {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.public-nav .btn-outline-primary {
+    border: 1px solid var(--primary);
+    color: var(--primary-dark) !important;
+    background-color: transparent !important;
+}
+
+.public-nav .btn-outline-primary:hover {
+    color: white !important;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+}
+
+.planning-card,
+.habits-card,
+.calendar-card {
+    position: relative;
+    margin-top: 36px !important;
+    border-top: 6px solid rgba(74, 144, 226, 0.22);
+}
+
+.planning-card::before,
+.habits-card::before,
+.calendar-card::before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(74, 144, 226, 0.30), transparent);
+}
+
+.calendar-filter-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background-color: #f8fbff;
+}
+
+.notes-layout,
+.ranking-table-wrapper {
+    align-items: start;
+}
+
+.notes-list {
+    display: grid;
+    gap: 14px;
+}
+
+.note-card {
+    display: grid;
+    gap: 10px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background-color: #fbfdff;
+}
+
+.note-card h3 {
+    margin-bottom: 4px;
+}
+
+.note-card small {
+    color: var(--muted);
+}
+
+.ranking-rules-card {
+    border-left: 6px solid var(--accent);
+}
+
+.ranking-table {
+    min-width: 980px;
+}
+
+.ranking-position {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background-color: var(--primary-soft);
+    color: var(--primary-dark);
+    font-weight: 900;
+}
+
+.ranking-position-1 {
+    background: #fff4dc;
+    color: #946200;
+}
+
+.ranking-position-2 {
+    background: #eef2ff;
+    color: #4338ca;
+}
+
+.ranking-position-3 {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.ranking-current-user {
+    background-color: rgba(74, 144, 226, 0.08);
+}
+
+@media (max-width: 920px) {
+    .calendar-filter-row {
+        grid-template-columns: 1fr;
     }
 }

@@ -99,6 +99,14 @@ export default class AchievementService {
             category: "Perfil",
             target: 1,
             getValue: user => user.name && user.bio && user.photo ? 1 : 0
+        },
+        {
+            key: "first_motivation_visit",
+            name: "Primeira visita à Motivação",
+            description: "Visita a área de Motivação pela primeira vez.",
+            category: "Motivação",
+            target: 1,
+            getValue: user => Number(user.stats?.motivationVisits) || 0
         }
     ];
 

@@ -1,5 +1,5 @@
-// Modelo responsável por representar um hábito diário.
-// Um hábito não fica concluído para sempre: guarda conclusões por data e volta a ficar pendente no dia seguinte.
+
+
 export default class HabitModel {
 
     constructor(title, description = "") {
@@ -13,7 +13,7 @@ export default class HabitModel {
         this.addHistory("Criação do hábito", "", this.title, this.createdAt);
     }
 
-    // Gera a chave local do dia no formato AAAA-MM-DD, evitando depender diretamente do UTC.
+    
     getDateKey(date = new Date()) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -21,7 +21,7 @@ export default class HabitModel {
         return `${year}-${month}-${day}`;
     }
 
-    // Guarda alterações do hábito e ações diárias para consulta no botão Ver histórico.
+    
     addHistory(type, oldValue = "", newValue = "", date = new Date().toISOString()) {
         this.history.push({
             id: `${Date.now()}-${Math.floor(Math.random() * 100000)}`,
@@ -106,7 +106,7 @@ export default class HabitModel {
         let streak = 0;
         const cursor = new Date(referenceDate);
 
-        // Analisa dias consecutivos para trás a partir de hoje.
+        
         while (completedDays.has(this.getDateKey(cursor))) {
             streak += 1;
             cursor.setDate(cursor.getDate() - 1);
