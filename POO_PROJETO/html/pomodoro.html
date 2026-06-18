@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro - FocusUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <main class="page-container">
+        <section class="page-heading">
+            <p class="eyebrow">Sessões de foco</p>
+            <h1>Pomodoro</h1>
+            <p>Escolhe um perfil, inicia a sessão e acompanha os ciclos de foco e pausa.</p>
+        </section>
+
+        <section class="cards-grid two-columns">
+            <article class="card">
+                <h2>Perfis de foco</h2>
+                <div class="button-row vertical-on-mobile">
+                    <button id="pomodoroBtn">Pomodoro Clássico</button>
+                    <button id="shortFocusBtn" class="secondary-button">Sessão Curta</button>
+                    <button id="intenseFocusBtn" class="secondary-button">Estudo Intensivo</button>
+                </div>
+
+                <div class="form-inline">
+                    <input type="number" id="customMinutes" min="1" placeholder="Minutos personalizados">
+                    <button id="customFocusBtn">Adicionar tempo</button>
+                </div>
+            </article>
+
+            <article class="timer-box expanded">
+                <h2>Sessão atual</h2>
+                <p id="sessionStatus">Nenhuma sessão ativa</p>
+
+                <dl class="details-list">
+                    <div>
+                        <dt>Perfil</dt>
+                        <dd id="profileName">Nenhum</dd>
+                    </div>
+                    <div>
+                        <dt>Modo</dt>
+                        <dd id="focusMode">Foco</dd>
+                    </div>
+                    <div>
+                        <dt>Ciclo</dt>
+                        <dd id="cycleInfo">1/4</dd>
+                    </div>
+                    <div>
+                        <dt>Progresso</dt>
+                        <dd id="cyclePercent">25%</dd>
+                    </div>
+                </dl>
+
+                <div id="timer">00:00:00</div>
+
+                <div class="button-row">
+                    <button id="startFocusBtn">Iniciar</button>
+                    <button id="pauseFocusBtn" class="secondary-button">Pausar</button>
+                    <button id="stopFocusBtn" class="danger-button">Parar</button>
+                    <button id="completeFocusBtn" class="success-button">Concluir ciclo</button>
+                </div>
+            </article>
+        </section>
+
+        <section class="stats-box">
+            <article class="stat-card">
+                <h3>Sessões</h3>
+                <p id="focusSessions">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Pausas</h3>
+                <p id="focusBreaks">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Minutos focados</h3>
+                <p id="focusMinutesTotal">0</p>
+            </article>
+        </section>
+    </main>
+
+    <script type="module" src="../js/view/pomodoroView.js"></script>
+</body>
+</html>
