@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefas e Hábitos - FocusUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <main class="page-container">
+        <section class="page-heading">
+            <p class="eyebrow">Organização diária</p>
+            <h1>Tarefas e Hábitos</h1>
+            <p>Cria tarefas, define prioridades, adiciona prazos e acompanha o histórico das alterações.</p>
+        </section>
+
+        <section class="card notification-settings-card mb-4">
+            <div class="section-title-row notification-settings-row">
+                <div>
+                    <p class="eyebrow">Avisos</p>
+                    <h2>Notificações</h2>
+                    <p class="text-muted mb-0">
+                        Ativa notificações do navegador para receber lembretes enquanto a aplicação estiver aberta. Se não autorizares, a app continua a mostrar avisos visuais internos.
+                    </p>
+                </div>
+                <div class="notification-actions">
+                    <button type="button" id="requestNotificationsBtn" class="secondary-button">Permitir notificações</button>
+                    <span id="notificationStatus" class="notification-status">A verificar permissões...</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card task-create-card">
+            <div class="section-title-row">
+                <div>
+                    <h2>Nova tarefa</h2>
+                    <p class="text-muted mb-0">A data e o horário limite são opcionais.</p>
+                </div>
+            </div>
+
+            <form id="taskForm" class="task-form task-form-extended">
+                <div>
+                    <label for="taskInput">Nome da tarefa</label>
+                    <input type="text" id="taskInput" placeholder="Ex.: Rever apontamentos de POO" required>
+                </div>
+
+                <div>
+                    <label for="taskPriority">Prioridade</label>
+                    <select id="taskPriority">
+                        <option value="Baixa">Baixa</option>
+                        <option value="Média" selected>Média</option>
+                        <option value="Alta">Alta</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="taskDueDate">Data limite</label>
+                    <input type="date" id="taskDueDate">
+                </div>
+
+                <div>
+                    <label for="taskDueTime">Horário limite</label>
+                    <input type="time" id="taskDueTime">
+                </div>
+
+                <div>
+                    <label for="taskReminder">Lembrete</label>
+                    <select id="taskReminder">
+                        <option value="none" selected>Sem lembrete</option>
+                        <option value="0">No momento do prazo</option>
+                        <option value="10">10 minutos antes</option>
+                        <option value="30">30 minutos antes</option>
+                        <option value="120">2 horas antes</option>
+                        <option value="1440">1 dia antes</option>
+                    </select>
+                </div>
+
+                <div class="task-form-action">
+                    <button type="submit">Adicionar</button>
+                </div>
+            </form>
+            <p id="taskMessage" class="message" aria-live="polite"></p>
+        </section>
+
+        <section class="stats-box task-stats-box">
+            <article class="stat-card">
+                <h3>Total</h3>
+                <p id="totalTasks">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Concluídas</h3>
+                <p id="completedTasks">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Pendentes</h3>
+                <p id="pendingTasks">0</p>
+            </article>
+            <article class="stat-card overdue-card">
+                <h3>Atrasadas</h3>
+                <p id="overdueTasks">0</p>
+            </article>
+        </section>
+
+        <section class="card">
+            <div class="section-title-row task-filter-header">
+                <div>
+                    <h2>Lista de tarefas</h2>
+                    <p class="text-muted mb-0">Filtra por estado e por prioridade.</p>
+                </div>
+
+                <div class="task-filter-group">
+                    <label for="taskStatusFilter">Estado</label>
+                    <select id="taskStatusFilter" aria-label="Filtrar tarefas por estado">
+                        <option value="all">Todos</option>
+                        <option value="pending">Pendentes</option>
+                        <option value="completed">Concluídas</option>
+                        <option value="overdue">Atrasadas</option>
+                    </select>
+
+                    <label for="taskPriorityFilter">Prioridade</label>
+                    <select id="taskPriorityFilter" aria-label="Filtrar tarefas por prioridade">
+                        <option value="all">Todos</option>
+                        <option value="Baixa">Baixa</option>
+                        <option value="Média">Média</option>
+                        <option value="Alta">Alta</option>
+                    </select>
+                </div>
+            </div>
+
+            <ul id="taskList" class="item-list task-list"></ul>
+        </section>
+
+        <section class="card planning-card mt-4">
+            <div class="section-title-row">
+                <div>
+                    <p class="eyebrow">Planeamento</p>
+                    <h2>Eventos e Planeamento</h2>
+                    <p class="text-muted mb-0">
+                        Guarda trabalhos, entregas, apresentações ou compromissos com data de início e data limite.
+                    </p>
+                </div>
+            </div>
+
+            <form id="eventForm" class="event-form event-form-extended mt-3">
+                <div>
+                    <label for="eventTitle">Título do evento</label>
+                    <input type="text" id="eventTitle" placeholder="Ex.: Trabalho de POO" required>
+                </div>
+
+                <div>
+                    <label for="eventCategory">Categoria</label>
+                    <select id="eventCategory">
+                        <option value="Faculdade" selected>Faculdade</option>
+                        <option value="Trabalho">Trabalho</option>
+                        <option value="Estudo">Estudo</option>
+                        <option value="Projeto">Projeto</option>
+                        <option value="Pessoal">Pessoal</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="eventStartDate">Data de início</label>
+                    <input type="date" id="eventStartDate" required>
+                </div>
+
+                <div>
+                    <label for="eventStartTime">Hora de início</label>
+                    <input type="time" id="eventStartTime">
+                </div>
+
+                <div>
+                    <label for="eventDueDate">Data limite</label>
+                    <input type="date" id="eventDueDate" required>
+                </div>
+
+                <div>
+                    <label for="eventDueTime">Hora limite</label>
+                    <input type="time" id="eventDueTime">
+                </div>
+
+                <div>
+                    <label for="eventStartReminder">Lembrete de início</label>
+                    <select id="eventStartReminder">
+                        <option value="none" selected>Sem lembrete</option>
+                        <option value="0">No momento do início</option>
+                        <option value="30">30 minutos antes</option>
+                        <option value="120">2 horas antes</option>
+                        <option value="1440">1 dia antes</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="eventDueReminder">Lembrete do limite</label>
+                    <select id="eventDueReminder">
+                        <option value="none" selected>Sem lembrete</option>
+                        <option value="0">No momento do limite</option>
+                        <option value="30">30 minutos antes</option>
+                        <option value="120">2 horas antes</option>
+                        <option value="1440">1 dia antes</option>
+                    </select>
+                </div>
+
+                <div class="event-description-field">
+                    <label for="eventDescription">Descrição opcional</label>
+                    <textarea id="eventDescription" rows="3" placeholder="Notas, objetivos ou contexto do evento"></textarea>
+                </div>
+
+                <div class="event-form-action">
+                    <button type="submit">Criar evento</button>
+                </div>
+            </form>
+
+            <p id="eventReflectionMessage" class="reflection-message d-none" aria-live="polite"></p>
+            <p id="eventMessage" class="message" aria-live="polite"></p>
+        </section>
+
+        <section class="stats-box event-stats-box">
+            <article class="stat-card">
+                <h3>Eventos</h3>
+                <p id="totalEvents">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Planeados</h3>
+                <p id="plannedEvents">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Em andamento</h3>
+                <p id="activeEvents">0</p>
+            </article>
+            <article class="stat-card overdue-card">
+                <h3>Atrasados</h3>
+                <p id="overdueEvents">0</p>
+            </article>
+        </section>
+
+        <section class="card">
+            <div class="section-title-row">
+                <div>
+                    <h2>Lista de eventos</h2>
+                    <p class="text-muted mb-0">Consulta o estado, antecipa o início ou vê o histórico de alterações.</p>
+                </div>
+            </div>
+            <ul id="eventList" class="item-list event-list"></ul>
+        </section>
+
+
+        <section class="card habits-card mt-4">
+            <div class="section-title-row">
+                <div>
+                    <p class="eyebrow">Rotina diária</p>
+                    <h2>Hábitos Diários</h2>
+                    <p class="text-muted mb-0">
+                        Cria hábitos que se repetem todos os dias. Quando marcas um hábito como feito, ele fica concluído apenas para o dia atual.
+                    </p>
+                </div>
+            </div>
+
+            <form id="habitForm" class="habit-form habit-form-extended mt-3">
+                <div>
+                    <label for="habitTitle">Nome do hábito</label>
+                    <input type="text" id="habitTitle" placeholder="Ex.: Estudar 30 minutos" required>
+                </div>
+
+                <div>
+                    <label for="habitDescription">Descrição opcional</label>
+                    <input type="text" id="habitDescription" placeholder="Ex.: Rever apontamentos antes do jantar">
+                </div>
+
+                <div class="habit-form-action">
+                    <button type="submit">Criar hábito</button>
+                </div>
+            </form>
+            <p id="habitMessage" class="message" aria-live="polite"></p>
+        </section>
+
+        <section class="stats-box habit-stats-box">
+            <article class="stat-card">
+                <h3>Hábitos</h3>
+                <p id="totalHabits">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Feitos hoje</h3>
+                <p id="completedHabitsToday">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Pendentes hoje</h3>
+                <p id="pendingHabitsToday">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Maior sequência atual</h3>
+                <p id="currentHabitStreak">0</p>
+            </article>
+        </section>
+
+        <section class="card">
+            <div class="section-title-row">
+                <div>
+                    <h2>Lista de hábitos diários</h2>
+                    <p class="text-muted mb-0">Marca o que fizeste hoje e acompanha o histórico por data.</p>
+                </div>
+            </div>
+            <ul id="habitList" class="item-list habit-list"></ul>
+        </section>
+
+
+        <section class="card calendar-card mt-4">
+            <div class="section-title-row calendar-heading-row">
+                <div>
+                    <p class="eyebrow">Planeamento mensal</p>
+                    <h2>Calendário</h2>
+                    <p class="text-muted mb-0">
+                        Consulta tarefas, eventos, hábitos concluídos e adiciona itens próprios como aulas, testes ou apresentações.
+                    </p>
+                </div>
+                <div class="calendar-controls" aria-label="Navegação do calendário">
+                    <button type="button" id="calendarPrevMonth" class="secondary-button">Mês anterior</button>
+                    <button type="button" id="calendarToday" class="secondary-button">Hoje</button>
+                    <button type="button" id="calendarNextMonth" class="secondary-button">Mês seguinte</button>
+                </div>
+            </div>
+
+            <div class="calendar-layout mt-3">
+                <div class="calendar-panel">
+                    <div class="calendar-month-title" id="calendarMonthTitle">Mês</div>
+                    <div class="calendar-weekdays" aria-hidden="true">
+                        <span>Seg</span>
+                        <span>Ter</span>
+                        <span>Qua</span>
+                        <span>Qui</span>
+                        <span>Sex</span>
+                        <span>Sáb</span>
+                        <span>Dom</span>
+                    </div>
+                    <div id="calendarGrid" class="calendar-grid" aria-label="Calendário mensal"></div>
+                </div>
+
+                <aside class="calendar-day-panel">
+                    <h3 id="selectedCalendarDateTitle">Itens do dia</h3>
+                    <p class="text-muted mb-2">Tarefas, eventos, hábitos concluídos e itens criados no calendário.</p>
+                    <div id="calendarDayItems" class="calendar-day-items"></div>
+                </aside>
+            </div>
+
+            <form id="calendarItemForm" class="calendar-item-form mt-4">
+                <div>
+                    <label for="calendarItemTitle">Título</label>
+                    <input type="text" id="calendarItemTitle" placeholder="Ex.: Teste de JavaScript" required>
+                </div>
+
+                <div>
+                    <label for="calendarItemCategory">Categoria</label>
+                    <select id="calendarItemCategory">
+                        <option value="Faculdade" selected>Faculdade</option>
+                        <option value="Trabalho">Trabalho</option>
+                        <option value="Estudo">Estudo</option>
+                        <option value="Teste">Teste</option>
+                        <option value="Apresentação">Apresentação</option>
+                        <option value="Projeto">Projeto</option>
+                        <option value="Pessoal">Pessoal</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="calendarItemType">Tipo</label>
+                    <select id="calendarItemType">
+                        <option value="Aula">Aula</option>
+                        <option value="Trabalho">Trabalho</option>
+                        <option value="Teste" selected>Teste</option>
+                        <option value="Apresentação">Apresentação</option>
+                        <option value="Projeto">Projeto</option>
+                        <option value="Estudo">Estudo</option>
+                        <option value="Evento pessoal">Evento pessoal</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="calendarItemDate">Data</label>
+                    <input type="date" id="calendarItemDate" required>
+                </div>
+
+                <div>
+                    <label for="calendarItemTime">Horário opcional</label>
+                    <input type="time" id="calendarItemTime">
+                </div>
+
+                <div>
+                    <label for="calendarItemReminder">Lembrete</label>
+                    <select id="calendarItemReminder">
+                        <option value="none" selected>Sem lembrete</option>
+                        <option value="0">No momento</option>
+                        <option value="30">30 minutos antes</option>
+                        <option value="120">2 horas antes</option>
+                        <option value="1440">1 dia antes</option>
+                        <option value="10080">1 semana antes</option>
+                    </select>
+                </div>
+
+                <div class="calendar-description-field">
+                    <label for="calendarItemDescription">Descrição opcional</label>
+                    <textarea id="calendarItemDescription" rows="3" placeholder="Notas, sala, matéria ou contexto"></textarea>
+                </div>
+
+                <div class="calendar-form-action">
+                    <button type="submit">Adicionar item</button>
+                </div>
+            </form>
+            <p id="calendarMessage" class="message" aria-live="polite"></p>
+        </section>
+
+    </main>
+
+    <script type="module" src="../js/view/taskView.js"></script>
+</body>
+</html>

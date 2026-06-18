@@ -1,0 +1,483 @@
+{
+  "users": [
+    {
+      "id": "admin-001",
+      "name": "Administrador",
+      "email": "admin@admin.com",
+      "password": "admin123",
+      "role": "admin",
+      "bio": "Conta de administração para testes académicos.",
+      "photo": "",
+      "points": 120,
+      "level": 3
+    },
+    {
+      "id": "user-001",
+      "name": "Utilizador Teste",
+      "email": "teste@focusup.com",
+      "password": "teste123",
+      "role": "user",
+      "bio": "Perfil de demonstração para testar tarefas, Pomodoro e conquistas.",
+      "photo": "",
+      "points": 55,
+      "level": 2
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task-001",
+      "userEmail": "teste@focusup.com",
+      "title": "Rever apontamentos de POO",
+      "priority": "Alta",
+      "completed": false,
+      "status": "Pendente",
+      "createdAt": "2026-06-10T09:00:00.000Z",
+      "completedAt": null,
+      "dueDate": "2026-06-20",
+      "dueTime": "18:00",
+      "versionHistory": [
+        {
+          "id": "version-task-001-creation",
+          "date": "2026-06-10T09:00:00.000Z",
+          "type": "Criação",
+          "oldValue": "",
+          "newValue": "Rever apontamentos de POO"
+        },
+        {
+          "id": "version-task-001-priority",
+          "date": "2026-06-11T10:00:00.000Z",
+          "type": "Alteração de prioridade",
+          "oldValue": "Média",
+          "newValue": "Alta"
+        }
+      ],
+      "reminders": [
+        {
+          "id": "reminder-task-001-due-120",
+          "trigger": "due",
+          "label": "2 horas antes",
+          "minutesBefore": 120,
+          "message": "Lembrete: a tarefa Rever apontamentos de POO termina em 2 horas.",
+          "sent": false,
+          "sentAt": null,
+          "createdAt": "2026-06-10T09:05:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "task-002",
+      "userEmail": "teste@focusup.com",
+      "title": "Completar sessão Pomodoro",
+      "priority": "Média",
+      "completed": true,
+      "status": "Concluída",
+      "createdAt": "2026-06-09T14:30:00.000Z",
+      "completedAt": "2026-06-09T15:00:00.000Z",
+      "dueDate": "2026-06-09",
+      "dueTime": "20:00",
+      "versionHistory": [
+        {
+          "id": "version-task-002-creation",
+          "date": "2026-06-09T14:30:00.000Z",
+          "type": "Criação",
+          "oldValue": "",
+          "newValue": "Completar sessão Pomodoro"
+        },
+        {
+          "id": "version-task-002-completed",
+          "date": "2026-06-09T15:00:00.000Z",
+          "type": "Conclusão",
+          "oldValue": "Pendente",
+          "newValue": "Concluída"
+        }
+      ],
+      "reminders": []
+    },
+    {
+      "id": "task-003",
+      "userEmail": "teste@focusup.com",
+      "title": "Preparar perguntas para a apresentação",
+      "priority": "Baixa",
+      "completed": false,
+      "status": "Atrasada",
+      "createdAt": "2026-06-12T11:15:00.000Z",
+      "completedAt": null,
+      "dueDate": "2026-06-15",
+      "dueTime": "10:00",
+      "versionHistory": [
+        {
+          "id": "version-task-003-creation",
+          "date": "2026-06-12T11:15:00.000Z",
+          "type": "Criação",
+          "oldValue": "",
+          "newValue": "Preparar perguntas para a apresentação"
+        },
+        {
+          "id": "version-task-003-deadline",
+          "date": "2026-06-13T08:30:00.000Z",
+          "type": "Alteração de data limite",
+          "oldValue": "Sem data",
+          "newValue": "2026-06-15"
+        }
+      ],
+      "reminders": []
+    }
+  ],
+  "habits": [
+    {
+      "id": "habit-001",
+      "userEmail": "teste@focusup.com",
+      "title": "Estudar 30 minutos",
+      "description": "Hábito diário para reduzir procrastinação e manter contacto com a matéria.",
+      "createdAt": "2026-06-10T10:00:00.000Z",
+      "completedDates": [
+        {
+          "date": "2026-06-14",
+          "completedAt": "2026-06-14T18:30:00.000Z"
+        },
+        {
+          "date": "2026-06-15",
+          "completedAt": "2026-06-15T18:45:00.000Z"
+        },
+        {
+          "date": "2026-06-16",
+          "completedAt": "2026-06-16T19:10:00.000Z"
+        }
+      ],
+      "history": [
+        {
+          "id": "history-habit-001-creation",
+          "date": "2026-06-10T10:00:00.000Z",
+          "type": "Criação do hábito",
+          "oldValue": "",
+          "newValue": "Estudar 30 minutos"
+        },
+        {
+          "id": "history-habit-001-done",
+          "date": "2026-06-16T19:10:00.000Z",
+          "type": "Conclusão diária",
+          "oldValue": "Pendente",
+          "newValue": "Feito em 2026-06-16"
+        }
+      ],
+      "statusToday": "Pendente"
+    },
+    {
+      "id": "habit-002",
+      "userEmail": "teste@focusup.com",
+      "title": "Organizar tarefas do dia",
+      "description": "Rever prioridades antes de começar a estudar.",
+      "createdAt": "2026-06-12T08:00:00.000Z",
+      "completedDates": [
+        {
+          "date": "2026-06-15",
+          "completedAt": "2026-06-15T08:15:00.000Z"
+        }
+      ],
+      "history": [
+        {
+          "id": "history-habit-002-creation",
+          "date": "2026-06-12T08:00:00.000Z",
+          "type": "Criação do hábito",
+          "oldValue": "",
+          "newValue": "Organizar tarefas do dia"
+        }
+      ],
+      "statusToday": "Pendente"
+    }
+  ],
+  "events": [
+    {
+      "id": "event-001",
+      "userEmail": "teste@focusup.com",
+      "title": "Entrega do trabalho de POO",
+      "description": "Preparar versão final do projeto, README e apresentação.",
+      "category": "Faculdade",
+      "createdAt": "2026-06-10T10:00:00.000Z",
+      "startDate": "2026-06-16",
+      "startTime": "09:00",
+      "dueDate": "2026-06-17",
+      "dueTime": "23:59",
+      "completed": false,
+      "completedAt": null,
+      "status": "Em andamento",
+      "versionHistory": [
+        {
+          "id": "version-event-001-creation",
+          "date": "2026-06-10T10:00:00.000Z",
+          "type": "Criação do evento",
+          "oldValue": "",
+          "newValue": "Entrega do trabalho de POO"
+        },
+        {
+          "id": "version-event-001-start",
+          "date": "2026-06-12T14:00:00.000Z",
+          "type": "Alteração de data de início",
+          "oldValue": "2026-06-15",
+          "newValue": "2026-06-16"
+        }
+      ],
+      "reminders": [
+        {
+          "id": "reminder-event-001-start-30",
+          "trigger": "start",
+          "label": "30 minutos antes",
+          "minutesBefore": 30,
+          "message": "Lembrete: o evento Entrega do trabalho de POO começa em 30 minutos.",
+          "sent": false,
+          "sentAt": null,
+          "createdAt": "2026-06-10T10:05:00.000Z"
+        },
+        {
+          "id": "reminder-event-001-due-1440",
+          "trigger": "due",
+          "label": "1 dia antes",
+          "minutesBefore": 1440,
+          "message": "Lembrete: o limite do evento Entrega do trabalho de POO é amanhã.",
+          "sent": false,
+          "sentAt": null,
+          "createdAt": "2026-06-10T10:06:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "event-002",
+      "userEmail": "teste@focusup.com",
+      "title": "Estudar para teste de JavaScript",
+      "description": "Rever classes, módulos, localStorage e DOM.",
+      "category": "Estudo",
+      "createdAt": "2026-06-11T08:30:00.000Z",
+      "startDate": "2026-06-25",
+      "startTime": "18:00",
+      "dueDate": "2026-07-01",
+      "dueTime": "10:00",
+      "completed": false,
+      "completedAt": null,
+      "status": "Planeado",
+      "versionHistory": [
+        {
+          "id": "version-event-002-creation",
+          "date": "2026-06-11T08:30:00.000Z",
+          "type": "Criação do evento",
+          "oldValue": "",
+          "newValue": "Estudar para teste de JavaScript"
+        }
+      ],
+      "reminders": []
+    },
+    {
+      "id": "event-003",
+      "userEmail": "teste@focusup.com",
+      "title": "Enviar relatório intermédio",
+      "description": "Exemplo de evento atrasado para testar o estado.",
+      "category": "Projeto",
+      "createdAt": "2026-06-01T09:15:00.000Z",
+      "startDate": "2026-06-03",
+      "startTime": "09:00",
+      "dueDate": "2026-06-05",
+      "dueTime": "18:00",
+      "completed": false,
+      "completedAt": null,
+      "status": "Atrasado",
+      "versionHistory": [
+        {
+          "id": "version-event-003-creation",
+          "date": "2026-06-01T09:15:00.000Z",
+          "type": "Criação do evento",
+          "oldValue": "",
+          "newValue": "Enviar relatório intermédio"
+        },
+        {
+          "id": "version-event-003-deadline",
+          "date": "2026-06-02T11:30:00.000Z",
+          "type": "Alteração de horário limite",
+          "oldValue": "17:00",
+          "newValue": "18:00"
+        }
+      ],
+      "reminders": []
+    }
+  ],
+  "calendarItems": [
+    {
+      "id": "calendar-001",
+      "userEmail": "teste@focusup.com",
+      "title": "Apresentação final",
+      "description": "Defesa do projeto de POO.",
+      "category": "Apresentação",
+      "type": "Apresentação",
+      "date": "2026-06-18",
+      "time": "14:00",
+      "createdAt": "2026-06-10T09:00:00.000Z",
+      "history": [
+        {
+          "id": "history-calendar-001-creation",
+          "date": "2026-06-10T09:00:00.000Z",
+          "type": "Criação do item",
+          "oldValue": "",
+          "newValue": "Apresentação final"
+        }
+      ],
+      "notifications": [
+        {
+          "id": "notif-001",
+          "type": "1 dia antes",
+          "minutesBefore": 1440,
+          "message": "A apresentação final é amanhã."
+        }
+      ],
+      "reminders": [
+        {
+          "id": "notif-001",
+          "trigger": "date",
+          "label": "1 dia antes",
+          "minutesBefore": 1440,
+          "message": "A apresentação final é amanhã.",
+          "sent": false,
+          "sentAt": null,
+          "createdAt": "2026-06-10T09:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "calendar-002",
+      "userEmail": "teste@focusup.com",
+      "title": "Aula de revisão de JavaScript",
+      "description": "Rever DOM, módulos e localStorage.",
+      "category": "Faculdade",
+      "type": "Aula",
+      "date": "2026-06-19",
+      "time": "10:30",
+      "createdAt": "2026-06-11T12:00:00.000Z",
+      "history": [
+        {
+          "id": "history-calendar-002-creation",
+          "date": "2026-06-11T12:00:00.000Z",
+          "type": "Criação do item",
+          "oldValue": "",
+          "newValue": "Aula de revisão de JavaScript"
+        }
+      ],
+      "reminders": []
+    },
+    {
+      "id": "calendar-003",
+      "userEmail": "teste@focusup.com",
+      "title": "Bloco de estudo individual",
+      "description": "Sessão de estudo focada antes da entrega.",
+      "category": "Estudo",
+      "type": "Estudo",
+      "date": "2026-06-16",
+      "time": "18:00",
+      "createdAt": "2026-06-12T08:45:00.000Z",
+      "history": [
+        {
+          "id": "history-calendar-003-creation",
+          "date": "2026-06-12T08:45:00.000Z",
+          "type": "Criação do item",
+          "oldValue": "",
+          "newValue": "Bloco de estudo individual"
+        }
+      ],
+      "reminders": []
+    }
+  ],
+  "pomodoroSessions": [
+    {
+      "id": "pomodoro-001",
+      "userEmail": "teste@focusup.com",
+      "profile": "Pomodoro Clássico",
+      "type": "focus",
+      "minutes": 25,
+      "cycle": 1,
+      "date": "2026-06-09T15:00:00.000Z"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "achievement-001",
+      "key": "first_focus",
+      "name": "Primeira sessão de foco concluída",
+      "description": "Conclui a tua primeira sessão de foco.",
+      "category": "Foco",
+      "target": 1
+    },
+    {
+      "id": "achievement-002",
+      "key": "first_task_created",
+      "name": "Primeira tarefa criada",
+      "description": "Cria a tua primeira tarefa.",
+      "category": "Tarefas",
+      "target": 1
+    },
+    {
+      "id": "achievement-003",
+      "key": "profile_completed",
+      "name": "Perfil preenchido",
+      "description": "Preenche nome, bio e foto de perfil.",
+      "category": "Perfil",
+      "target": 1
+    }
+  ],
+  "statistics": [
+    {
+      "id": "stats-001",
+      "userEmail": "teste@focusup.com",
+      "focusSessions": 1,
+      "breaks": 0,
+      "focusMinutes": 25,
+      "tasksCreated": 2,
+      "tasksCompleted": 1,
+      "achievements": 1,
+      "eventsCreated": 3,
+      "eventsOverdue": 1,
+      "habitsCreated": 2,
+      "habitsCompletedToday": 0,
+      "habitCompletionsTotal": 4,
+      "calendarItemsCreated": 3
+    }
+  ],
+  "profiles": [
+    {
+      "id": "profile-001",
+      "userEmail": "teste@focusup.com",
+      "name": "Utilizador Teste",
+      "bio": "Perfil de demonstração.",
+      "photo": ""
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notification-settings-example",
+      "type": "info",
+      "title": "Sistema de notificações",
+      "message": "As notificações são guardadas no localStorage e podem ser simuladas pelo JSON Server.",
+      "createdAt": "2026-06-17T12:00:00.000Z"
+    },
+    {
+      "id": "notification-reminder-example",
+      "type": "reminder",
+      "source": "calendarItems",
+      "sourceId": "calendar-001",
+      "trigger": "date",
+      "minutesBefore": 1440,
+      "sent": false
+    }
+  ],
+  "motivationLinks": [
+    {
+      "id": "motivation-001",
+      "title": "Informação geral sobre TDAH",
+      "type": "organização de saúde",
+      "url": "https://www.cdc.gov/adhd/",
+      "description": "Conteúdo informativo sobre TDAH. Não substitui acompanhamento profissional."
+    },
+    {
+      "id": "motivation-002",
+      "title": "Técnicas de estudo e foco",
+      "type": "artigo educativo",
+      "url": "https://www.apa.org/topics/adhd",
+      "description": "Informação educativa sobre atenção, foco e TDAH."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatísticas - FocusUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <main class="page-container">
+        <section class="page-heading">
+            <p class="eyebrow">Progresso</p>
+            <h1>Estatísticas e Gráficos</h1>
+            <p>Acompanha a evolução das sessões de foco, tarefas e conquistas.</p>
+        </section>
+
+        <section class="stats-box dashboard-summary">
+            <article class="stat-card">
+                <h3>Sessões de foco</h3>
+                <p id="statFocusSessions">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Pausas</h3>
+                <p id="statBreaks">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Tempo focado</h3>
+                <p id="statFocusMinutes">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Tarefas criadas</h3>
+                <p id="statTasksCreated">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Tarefas concluídas</h3>
+                <p id="statTasksCompleted">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Conquistas</h3>
+                <p id="statAchievements">0</p>
+            </article>
+            <article class="stat-card">
+                <h3>Progresso geral</h3>
+                <p id="statProgress">0%</p>
+            </article>
+        </section>
+
+        <section class="cards-grid two-columns">
+            <article class="card">
+                <h2>Sessões de foco por dia</h2>
+                <div id="focusDailyChart" class="bar-chart"></div>
+            </article>
+            <article class="card">
+                <h2>Sessões de foco por semana</h2>
+                <div id="focusWeeklyChart" class="bar-chart"></div>
+            </article>
+            <article class="card">
+                <h2>Tarefas concluídas por dia</h2>
+                <div id="tasksDailyChart" class="bar-chart"></div>
+            </article>
+            <article class="card">
+                <h2>Tarefas concluídas por semana</h2>
+                <div id="tasksWeeklyChart" class="bar-chart"></div>
+            </article>
+            <article class="card">
+                <h2>Conquistas por dia</h2>
+                <div id="badgesDailyChart" class="bar-chart"></div>
+            </article>
+            <article class="card">
+                <h2>Comparação semanal</h2>
+                <div id="weeklyComparisonChart" class="bar-chart comparison-chart"></div>
+            </article>
+        </section>
+    </main>
+
+    <script type="module" src="../js/view/statisticsView.js"></script>
+</body>
+</html>

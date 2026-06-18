@@ -1,0 +1,14 @@
+{
+  "name": "poo-projeto-3-focusup",
+  "version": "1.1.0",
+  "description": "Aplicação FocusUp para POO com localStorage e JSON Server como Mock Server.",
+  "private": true,
+  "scripts": {
+    "mock-server": "json-server --watch db.json --port 3000",
+    "mock-server:delay": "json-server --watch db.json --port 3000 --delay 500"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.4"
+  },
+  "type": "module"
+}
